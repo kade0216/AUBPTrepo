@@ -3,7 +3,9 @@ Compiled programs for the Alcohol Use Behavioral Processing Tasks
 
 # File descriptions
 Bart-psychopy.zip – folder containing psychopy materials for the Balloon Analogue Risk Task. Contains an exported python file called bart.py that is used in Beeware.
+
 Helloworld.zip – contains project space for sample Beeware application (currently blank). Main python files can be found by going to src/helloworld. Run on the mac by going to macOS/app/Hello World.
+
 bartBeewareImplementation.zip – our attempt at translating the psychopy BART task into the Beeware framework. Main modifications are done in app.py.
 
 # Coding Issues Description
