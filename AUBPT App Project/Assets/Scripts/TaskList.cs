@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class TaskList : MonoBehaviour
 {
   public void OpenLogin(){
-      SceneManager.LoadScene("Scene1");
+      SceneManager.LoadScene("LogInSystem");
   }
 
   public void OpenScene1(){
