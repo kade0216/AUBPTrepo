@@ -18,7 +18,7 @@ public class TaskList : MonoBehaviour
   }
 
   public void OpenScene3(){
-      SceneManager.LoadScene("Task3");
+      SceneManager.LoadScene("StopSignal");
   }
 
   public void OpenTaskPage(){
