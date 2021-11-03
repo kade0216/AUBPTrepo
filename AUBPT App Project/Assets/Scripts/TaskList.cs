@@ -10,7 +10,7 @@ public class TaskList : MonoBehaviour
   }
 
   public void OpenScene1(){
-      SceneManager.LoadScene("Task1");
+      SceneManager.LoadScene("DelayDiscounting");
   }
 
   public void OpenScene2(){
