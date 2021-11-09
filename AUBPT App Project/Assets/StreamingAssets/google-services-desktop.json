@@ -1,0 +1,36 @@
+{
+  "client": [
+    {
+      "services": {
+        "appinvite_service": {
+          "status": 1
+        }, 
+        "analytics_service": {
+          "status": 0
+        }
+      }, 
+      "oauth_client": [
+        {
+          "client_id": "419195829537-q9qj5spjh14mbpm0nb450r3k96aeg3q4.apps.googleusercontent.com"
+        }
+      ], 
+      "api_key": [
+        {
+          "current_key": "AIzaSyC1oIH1TwMjiAl08T9iipEq-izR8gpufJM"
+        }
+      ], 
+      "client_info": {
+        "mobilesdk_app_id": "1:419195829537:ios:97cb00a473bc095b5fd260", 
+        "android_client_info": {
+          "package_name": "com.duke.AUPBT"
+        }
+      }
+    }
+  ], 
+  "configuration_version": "1", 
+  "project_info": {
+    "storage_bucket": "aupbt-unity.appspot.com", 
+    "project_id": "aupbt-unity", 
+    "project_number": "419195829537"
+  }
+}
