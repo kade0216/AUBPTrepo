@@ -20,6 +20,7 @@ public GameObject TrialPanel1;
 public GameObject TrialPanel2;
 
 public GameObject CorrectResponsePanel;
+public GameObject TrialBlockPanel;
 
 private float waitTime;
 public int numberTrials = 0;
@@ -27,6 +28,9 @@ public bool trial;
 public int panel = 1;
 public float reactionTime;
 public float timeSinceStartup;
+
+public int correctResponse;
+public int incorrectResponse;
 
 public List<float> listReactionTimes = new List<float>();
 
@@ -37,6 +41,7 @@ public List<float> listReactionTimes = new List<float>();
 void Start() //login page launches when user starts app
 {
     Panel1.SetActive(true);
+
 
 }
 
@@ -142,6 +147,8 @@ public void TrialPanelOne(){
     Panel7.SetActive(false);
     Panel8.SetActive(false);
     TrialPanel1.SetActive(true);
+    TrialBlockPanel.SetActive(false);
+    timeSinceStartup = Time.time;
 
 }
 
@@ -169,10 +176,14 @@ public void chooseRight() {
   listReactionTimes.Add(reactionTime);
 
   if (panel == 0) {
+    chooseTrue();
     TrialAlternate(true);
+    correctResponse++;
+
   }
   else {
     TrialAlternate(false);
+    incorrectResponse++;
   }
 
 }
@@ -183,34 +194,44 @@ public void chooseLeft() {
   listReactionTimes.Add(reactionTime);
 
   if (panel == 1) {
+    chooseTrue();
     TrialAlternate(true);
+    correctResponse++;
+
   }
   else {
     TrialAlternate(false);
+    incorrectResponse++;
   }
 }
 
+public void chooseTrue() {
+  StartCoroutine(GoodJob());
+
+  IEnumerator GoodJob() {
+    yield return new WaitForSeconds(0);
+    CorrectResponsePanel.SetActive(true);
+    yield return new WaitForSeconds(1);
+    CorrectResponsePanel.SetActive(false);
+  }
+}
 
 public void TrialAlternate(bool dir) {
-    if (numberTrials <= 5) {
+
+
+    if (numberTrials <= 3) {
       trial =  Random.Range(0f, 1f) > 0.50;
       panel = trial ? 1 : 0;
+      numberTrials++;
+
       // reactionTime = Time.time;
 
 
       if (dir == true) {
         // yield return new WaitForSeconds(2);
-        StartCoroutine(GoodJob());
-
-        IEnumerator GoodJob() {
-          yield return new WaitForSeconds(0);
-          CorrectResponsePanel.SetActive(true);
-          yield return new WaitForSeconds(1);
-          CorrectResponsePanel.SetActive(false);
-          TrialPanel1.SetActive(trial);
-          TrialPanel2.SetActive(!trial);
-          timeSinceStartup = Time.time;
-        }
+        TrialPanel1.SetActive(trial);
+        TrialPanel2.SetActive(!trial);
+        timeSinceStartup = Time.time + 1;
       }
 
       if (dir == false) {
@@ -223,7 +244,7 @@ public void TrialAlternate(bool dir) {
         //CorrectResponsePanel.SetActive(true);
       }
 
-      numberTrials++;
+
     }
 
     else {
@@ -233,6 +254,13 @@ public void TrialAlternate(bool dir) {
         result += item.ToString() + ", ";
       }
       Debug.Log(result);
+      Debug.Log(incorrectResponse);
+
+      TrialPanel1.SetActive(false);
+      TrialPanel2.SetActive(false);
+      TrialBlockPanel.SetActive(true);
+      numberTrials = 0;
+      panel = 1;
     }
     //Debug.Log(reactionTime);
 }
