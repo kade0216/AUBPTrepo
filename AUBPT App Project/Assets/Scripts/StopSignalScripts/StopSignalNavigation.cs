@@ -180,7 +180,7 @@ public void chooseRight() {
   listReactionTimes.Add(reactionTime);
 
   if (panel == 0) {
-    chooseTrue();
+    //chooseTrue();
     TrialAlternate(true);
     correctResponse++;
 
@@ -198,7 +198,7 @@ public void chooseLeft() {
   listReactionTimes.Add(reactionTime);
 
   if (panel == 1) {
-    chooseTrue();
+    //chooseTrue();
     TrialAlternate(true);
     correctResponse++;
 
@@ -219,7 +219,25 @@ public void chooseTrue() {
     CorrectResponsePanel.SetActive(true);
     yield return new WaitForSeconds(1);
     CorrectResponsePanel.SetActive(false);
+    TrialPanel1.SetActive(trial);
+    TrialPanel2.SetActive(!trial);
     WhistleAudio();
+  }
+
+
+}
+
+public void displayGoobJobBlock() {
+  StartCoroutine(GoodJob());
+
+  IEnumerator GoodJob() {
+    TrialPanel1.SetActive(false);
+    TrialPanel2.SetActive(false);
+    yield return new WaitForSeconds(0);
+    CorrectResponsePanel.SetActive(true);
+    yield return new WaitForSeconds(1);
+    CorrectResponsePanel.SetActive(false);
+    TrialBlockPanel.SetActive(true);
   }
 
 
@@ -234,11 +252,10 @@ public void TrialAlternate(bool dir) {
       numberTrials++;
 
       // reactionTime = Time.time;
-      TrialPanel1.SetActive(trial);
-      TrialPanel2.SetActive(!trial);
 
       if (dir == true) {
         // yield return new WaitForSeconds(2);
+        chooseTrue();
         // TrialPanel1.SetActive(trial);
         // TrialPanel2.SetActive(!trial);
         timeSinceStartup = Time.time + 1;
@@ -246,8 +263,8 @@ public void TrialAlternate(bool dir) {
 
       if (dir == false) {
 
-        // TrialPanel1.SetActive(trial);
-        // TrialPanel2.SetActive(!trial);
+        TrialPanel1.SetActive(trial);
+        TrialPanel2.SetActive(!trial);
         WhistleAudio();
         timeSinceStartup = Time.time;
 
@@ -267,9 +284,15 @@ public void TrialAlternate(bool dir) {
       //Debug.Log(result);
       //Debug.Log(incorrectResponse);
 
-      TrialPanel1.SetActive(false);
-      TrialPanel2.SetActive(false);
-      TrialBlockPanel.SetActive(true);
+      if (dir == true) {
+          displayGoobJobBlock();
+      }
+      else {
+        TrialPanel1.SetActive(false);
+        TrialPanel2.SetActive(false);
+        TrialBlockPanel.SetActive(true);
+      }
+
       numberTrials = 0;
       panel = 1;
     }
@@ -286,7 +309,15 @@ public void WhistleAudio() {
 
   if (result) {
     audioSource.PlayDelayed(delay);
+    StartCoroutine(StopSignalDelay());
+    // TrialAlternate(true);
   }
+
+  IEnumerator StopSignalDelay() {
+    yield return new WaitForSeconds(3);
+    TrialAlternate(true);
+  }
+
   Debug.Log(delay);
 }
 
