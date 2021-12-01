@@ -148,7 +148,7 @@ public void PanelEight(){
 
 }
 
-public void TrialPanelOne(){
+public void TrialPanel(){
 
     Panel1.SetActive(false);
     Panel2.SetActive(false);
@@ -158,15 +158,22 @@ public void TrialPanelOne(){
     Panel6.SetActive(false);
     Panel7.SetActive(false);
     Panel8.SetActive(false);
-    TrialPanel1.SetActive(true);
     TrialBlockPanel.SetActive(false);
+    TrialPanel1.SetActive(trial);
+    TrialPanel2.SetActive(!trial);
+    if (trial == true) {
+      panel = 1;
+    }
+    if (trial == false) {
+      panel = 0;
+    }
     timeSinceStartup = Time.time;
 
 }
 
 
 public void chooseNeither() {
-  if (pressed == false) {
+  if (pressed == false && numberTrials <= 2) {
     List<bool> currCorrect = new List<bool>();
     currCorrect.Add(true);
     currCorrect.Add(result);
@@ -174,6 +181,9 @@ public void chooseNeither() {
     numberTrials++;
     totalTrials++;
     chooseTrue();
+  }
+  else {
+    TrialAlternate(true);
   }
 }
 
@@ -190,10 +200,10 @@ public void chooseRight() {
 
   pressed = true;
 
-  if (panel == 0) {
+  if (panel == 0 && result == false) {
     TrialAlternate(true);
   }
-  else {
+  else if (panel == 1 && result == false) {
     TrialAlternate(false);
   }
 
@@ -230,10 +240,10 @@ public void chooseLeft() {
   listReactionTimes.Add(reactionTime);
   pressed = true;
 
-  if (panel == 1) {
+  if (panel == 1 && result == false) {
     TrialAlternate(true);
   }
-  else {
+  else if (panel == 0 && result == false){
     TrialAlternate(false);
   }
 
@@ -267,6 +277,7 @@ public void chooseTrue() {
     CorrectResponsePanel.SetActive(false);
     TrialPanel1.SetActive(trial);
     TrialPanel2.SetActive(!trial);
+    timeSinceStartup = Time.time;
     WhistleAudio();
   }
 }
@@ -281,6 +292,7 @@ public void chooseFalse() {
     IncorrectResponsePanel.SetActive(false);
     TrialPanel1.SetActive(trial);
     TrialPanel2.SetActive(!trial);
+    timeSinceStartup = Time.time;
     WhistleAudio();
   }
 
@@ -327,8 +339,8 @@ public void TrialAlternate(bool dir) {
     numberTrials++;
     totalTrials++;
 
-    if (dir == true && result == false)  {
-      timeSinceStartup = Time.time;
+    if (dir == true && result == false && pressed == true)  {
+      //timeSinceStartup = Time.time;
       currCorrect.Add(dir);
       currCorrect.Add(result);
       correctness.Add(currCorrect);
@@ -337,8 +349,8 @@ public void TrialAlternate(bool dir) {
       //TrialPanel2.SetActive(!trial);
       //WhistleAudio();
     }
-    if (dir == false && result == false)  {
-      timeSinceStartup = Time.time;
+    if (dir == false && result == false && pressed == true)  {
+      //timeSinceStartup = Time.time;
       currCorrect.Add(dir);
       currCorrect.Add(result);
       correctness.Add(currCorrect);
@@ -408,7 +420,7 @@ public void TrialAlternate(bool dir) {
       TrialBlockPanel.SetActive(true);
     }
 
-    string output = "List contents: ";
+    string output = "Correct contents: ";
     foreach (var item in correctness)
     {
       string combinedString = string.Join( ",", item);
@@ -416,8 +428,19 @@ public void TrialAlternate(bool dir) {
     }
     Debug.Log(output);
     //Debug.Log(correctness);
+
+
+    string reactions = "RT contents: ";
+    foreach (var item in listReactionTimes)
+    {
+      reactions += item.ToString() + ", ";
+    }
+    Debug.Log(reactions);
+
+
     numberTrials = 0;
     panel = 1;
+    trial =  Random.Range(0f, 1f) > 0.50;
   }
 
 
@@ -464,19 +487,22 @@ public void WhistleAudio() {
 
   if (result) {
     audioSource.PlayDelayed(delay);
+    pressed = false;
     StartCoroutine(StopSignalDelay());
     // TrialAlternate(true);
   }
 
   IEnumerator StopSignalDelay() {
-    pressed = false;
     yield return new WaitForSeconds(3);
     chooseNeither();
+    result = false;
     //TrialAlternate(true);
     //correctness.Add(totalTrials, dir, result);
     //chooseTrue();
     //TrialAlternate(true);
   }
+
+
 
   // Debug.Log(delay);
 }
