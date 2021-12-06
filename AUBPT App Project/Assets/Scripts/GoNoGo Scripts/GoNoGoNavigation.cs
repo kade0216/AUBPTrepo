@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GoNoGoNavigation : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public GameObject IncorrectPage1;
 public GameObject IncorrectPage2;
 public GameObject Cross;
 public GameObject TrialBlock;
-public GameObject ThankYou/EndingPage;
+public GameObject EndingPage;
 
 private float waitTime;
 public int numberTrials = 0;
@@ -38,14 +39,14 @@ public string output;
 public List<float> listReactionTimes = new List<float>();
 
 
-// default app startup 
-void Start() //login page launches when user starts app 
+// default app startup
+void Start() //login page launches when user starts app
 {
 	BeforeYouStart.SetActive(true);
 }
 
 
-public void Instructions() {
+public void InstructionsPage() {
 	BeforeYouStart.SetActive(false);
 	Instructions.SetActive(true);
 	InstructionsContinued.SetActive(false);
@@ -56,10 +57,10 @@ public void Instructions() {
 	IncorrectPage2.SetActive(false);
 	Cross.SetActive(false);
 	TrialBlock.SetActive(false);
-	ThankYou/EndingPage.SetActive(false);
+	EndingPage.SetActive(false);
 }
 
-public void InstructionsContinued() {
+public void InstructionsContinuedPage() {
 	BeforeYouStart.SetActive(false);
 	Instructions.SetActive(false);
 	InstructionsContinued.SetActive(true);
@@ -70,10 +71,10 @@ public void InstructionsContinued() {
 	IncorrectPage2.SetActive(false);
 	Cross.SetActive(false);
 	TrialBlock.SetActive(false);
-	ThankYou/EndingPage.SetActive(false);
+	EndingPage.SetActive(false);
 }
 
-public void X() {
+public void XPage() {
 	BeforeYouStart.SetActive(false);
 	Instructions.SetActive(false);
 	InstructionsContinued.SetActive(false);
@@ -84,10 +85,10 @@ public void X() {
 	IncorrectPage2.SetActive(false);
 	Cross.SetActive(false);
 	TrialBlock.SetActive(false);
-	ThankYou/EndingPage.SetActive(false);
+	EndingPage.SetActive(false);
 }
 
-public void Y() {
+public void YPage() {
 	BeforeYouStart.SetActive(false);
 	Instructions.SetActive(false);
 	InstructionsContinued.SetActive(false);
@@ -98,10 +99,10 @@ public void Y() {
 	IncorrectPage2.SetActive(false);
 	Cross.SetActive(false);
 	TrialBlock.SetActive(false);
-	ThankYou/EndingPage.SetActive(false);
+	EndingPage.SetActive(false);
 }
 
-public void CorrectPage() {
+public void Correct() {
 	BeforeYouStart.SetActive(false);
 	Instructions.SetActive(false);
 	InstructionsContinued.SetActive(false);
@@ -112,10 +113,10 @@ public void CorrectPage() {
 	IncorrectPage2.SetActive(false);
 	Cross.SetActive(false);
 	TrialBlock.SetActive(false);
-	ThankYou/EndingPage.SetActive(false);
+	EndingPage.SetActive(false);
 }
 
-public void IncorrectPage1() {
+public void Incorrect1() {
 	BeforeYouStart.SetActive(false);
 	Instructions.SetActive(false);
 	InstructionsContinued.SetActive(false);
@@ -126,10 +127,10 @@ public void IncorrectPage1() {
 	IncorrectPage2.SetActive(false);
 	Cross.SetActive(false);
 	TrialBlock.SetActive(false);
-	ThankYou/EndingPage.SetActive(false);
+	EndingPage.SetActive(false);
 }
 
-public void IncorrectPage2() {
+public void Incorrect2() {
 	BeforeYouStart.SetActive(false);
 	Instructions.SetActive(false);
 	InstructionsContinued.SetActive(false);
@@ -140,10 +141,10 @@ public void IncorrectPage2() {
 	IncorrectPage2.SetActive(true);
 	Cross.SetActive(false);
 	TrialBlock.SetActive(false);
-	ThankYou/EndingPage.SetActive(false);
+	EndingPage.SetActive(false);
 }
 
-public void Cross() {
+public void CrossPage() {
 	BeforeYouStart.SetActive(false);
 	Instructions.SetActive(false);
 	InstructionsContinued.SetActive(false);
@@ -154,10 +155,10 @@ public void Cross() {
 	IncorrectPage2.SetActive(false);
 	Cross.SetActive(true);
 	TrialBlock.SetActive(false);
-	ThankYou/EndingPage.SetActive(false);
+	EndingPage.SetActive(false);
 }
 
-public void TrialBlock() {
+public void TrialBlockPage() {
 	BeforeYouStart.SetActive(false);
 	Instructions.SetActive(false);
 	InstructionsContinued.SetActive(false);
@@ -168,10 +169,10 @@ public void TrialBlock() {
 	IncorrectPage2.SetActive(false);
 	Cross.SetActive(false);
 	TrialBlock.SetActive(true);
-	ThankYou/EndingPage.SetActive(false);
+	EndingPage.SetActive(false);
 }
 
-public void ThankYou/EndingPage() {
+public void Ending() {
 	BeforeYouStart.SetActive(false);
 	Instructions.SetActive(false);
 	InstructionsContinued.SetActive(false);
@@ -182,7 +183,7 @@ public void ThankYou/EndingPage() {
 	IncorrectPage2.SetActive(false);
 	Cross.SetActive(false);
 	TrialBlock.SetActive(false);
-	ThankYou/EndingPage.SetActive(true);
+	EndingPage.SetActive(true);
 }
 
 
@@ -191,15 +192,15 @@ public void ThankYou/EndingPage() {
 
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // // Start is called before the first frame update
+    // void Start()
+    // {
+		//
+    // }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
