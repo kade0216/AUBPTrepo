@@ -22,13 +22,20 @@ public GameObject EndingPage;
 private float waitTime;
 public int numberTrials = 0;
 public int totalTrials = 0;
+public int blockNumber = 1;
 public bool trial;
 public int panel = 1;
 public float reactionTime;
 public float timeSinceStartup;
 
-//public int correctResponse;
-//public int incorrectResponse;
+public double probxgivenx = 0.3;
+public double probxgiveny = 0.7;
+
+public double probygiveny = 0.3;
+public double probygivenx = 0.7;
+
+public int correctResponse;
+public int incorrectResponse;
 public List<List<bool>> correctness = new List<List<bool>>();
 
 public bool result;
@@ -45,6 +52,19 @@ void Start() //login page launches when user starts app
 	BeforeYouStart.SetActive(true);
 }
 
+public void BeforeYouStartPage() {
+	BeforeYouStart.SetActive(true);
+	Instructions.SetActive(false);
+	InstructionsContinued.SetActive(false);
+	X.SetActive(false);
+	Y.SetActive(false);
+	CorrectPage.SetActive(false);
+	IncorrectPage1.SetActive(false);
+	IncorrectPage2.SetActive(false);
+	Cross.SetActive(false);
+	TrialBlock.SetActive(false);
+	EndingPage.SetActive(false);
+}
 
 public void InstructionsPage() {
 	BeforeYouStart.SetActive(false);
@@ -186,9 +206,22 @@ public void Ending() {
 	EndingPage.SetActive(true);
 }
 
+public void OpenTaskPage(){
+      SceneManager.LoadScene("TaskListPage");
+  }
 
 
-
+// public void Update()
+// {
+//	if(Input.GetMouseButtonDown(0))
+//	{
+//		if (EventSystem.current.IsPointerOverGameObject())
+//			return;
+//
+//		Ray ray = Camera.main.ScreenPointToRay(Input.MousePosition);
+//		RaycastHit hitInfo;
+//}
+//} 
 
 
 
