@@ -211,6 +211,20 @@ public void OpenTaskPage(){
   }
 
 
+
+public void chooseSceneGivenX(){
+	int prob  = rnd.Next(1, 11); // creates number between 1 and 10
+	if (prob < 8)
+{
+		XPage()
+}
+	if (prob > 8)
+{
+		YPage()	
+}
+}
+
+
 // public void Update()
 // {
 //	if(Input.GetMouseButtonDown(0))
