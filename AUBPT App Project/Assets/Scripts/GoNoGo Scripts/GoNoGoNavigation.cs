@@ -30,17 +30,16 @@ public float timeSinceStartup;
 
 public int correctResponse;
 public int incorrectResponse;
-public List<List<bool>> correctness = new List<List<bool>>();
-public Dictionary<int, List<bool>> correctness = new Dictionary<int, List<bool>>();
+public Dictionary<int, List<bool>> correctness = new Dictionary<int, List<bool>>(); // why is there a List
 
 public bool result;
 public bool pressed;
 
 public string output;
 
+
 // public List<float> listReactionTimes = new List<float>();
 public Dictionary<int, float> listReactionTimes = new Dictionary<int, float>();
-
 
 
 
@@ -205,103 +204,73 @@ public void Ending() {
 	EndingPage.SetActive(true);
 }
 
-
-
-
-
-// public void chooseSceneGivenX(){
-//	int prob  = rnd.Next(1, 11); // creates number between 1 and 10
-//	if (prob < 8)
-// {
-//		XPage();
-// }
-// 	if (prob > 8)
-// {
-//		YPage();	
-// }
-// 	}
-
-
-// public void Update()
-// {
-//	if(Input.GetMouseButtonDown(0))
-//	{
-//		if (EventSystem.current.IsPointerOverGameObject())
-//			return;
-//
-//		Ray ray = Camera.main.ScreenPointToRay(Input.MousePosition);
-//		RaycastHit hitInfo;
-//}
-//} 
-
-
-
-    // // Start is called before the first frame update
-    // void Start()
-    // {
-		//
-    // }
-
-    // Update is called once per frame
-//    void Update()
-//    {
-
-//    }
-// }
-
-
-public void chooseTrue() {
-   Start Coroutine(GoodJob());
-
-   IEnumerator GoodJob () {
-      yield return new WaitForSeconds(0);
-      CorrectPage.SetActive(true);
-      Yield return new WaitForSeconds(1);
-      CorrectPage.SetActive(false);
-      timeSinceStartup = Time.time;
-   }
-} 
-
-public void chooseFalse1() {
-   StartCoroutine(BadJob());
-
-   IEnumerator BadJob() {
-      yield return WaitForSeconds(0);
-      IncorrectPage1.SetActive(true);
-      yield return new WaitForSeconds((float)0.5);
-      IncorrectPage1.SetActive(false);
-      timeSinceStartup = Time.time;
-   }
+public void chooseCorrect() {
+  reactionTime = Time.time - timeSinceStartup;
+  Debug.Log(reactionTime); // potentially comment this out after
+  listReactionTimes.Add(totalTrials+1, reactionTime);
+	correctness.Add(totalTrials, currCorrect);
 }
 
-public void chooseFalse2() {
-   StartCoroutine(BadJob());
-
-   IEnumerator BadJob() {
-      yield return WaitForSeconds(0);
-      IncorrectPage2.SetActive(true);
-      yield return new WaitForSeconds((float)0.5);
-      IncorrectPage2.SetActive(false);
-      timeSinceStartup = Time.time;
-   }
+public void chooseInCorrect() {
+  reactionTime = Time.time - timeSinceStartup;
+  Debug.Log(reactionTime); // potentially comment this out after
+  listReactionTimes.Add(totalTrials+1, reactionTime);
 }
 
-public void endOfBlock() {
-  StartCoroutine(endBlock());
 
-  IEnumerator endBlock() {
-    yield return new WaitForSeconds(1);
-    TrialBlock.SetActive(true);
-  }
+
+public void Trials(bool dir) {
+	List<bool> currCorrect = new List<bool>();
+	List<int> Trial = new List<int>();
+	if (numberTrials == 0){
+		trial =  Random.Range(0f, 1f) > 0.50;
+		panel = trial ? 1 : 0;
+		if (panel == 0) {
+			CrossPage();
+			IEnumerator Delay() {
+				yield return new WaitForSeconds(1);
+				XPage();
+			}
+			Trial.Add(panel);
+		}
+		else {
+			CrossPage();
+			IEnumerator Delay() {
+				yield return new WaitForSeconds(1);
+				YPage();
+			}
+			Trial.Add(panel);
+		}
+		//what is the difference betwen nTrials and tTrials ?
+		numberTrials++;
+		totalTrials++;
+	}
+	if (numberTrials > 0 && <= 5 ) { //set numberTrials to <= 100
+		if (Trial[numberTrials - 1] == 0){
+			trial =  Random.Range(0f, 1f) > 0.70;
+			panel = trial ? 1 : 0;
+		}
+		else{
+			trial =  Random.Range(0f, 1f) > 0.70;
+			panel = trial ? 0 : 1;
+		}
+		if (panel == 0) {
+			CrossPage();
+			IEnumerator Delay() {
+				yield return new WaitForSeconds(1);
+				XPage();
+			}
+			Trial.Add(panel);
+		}
+		else {
+			CrossPage();
+			IEnumerator Delay() {
+				yield return new WaitForSeconds(1);
+				YPage();
+			}
+		numberTrials++;
+		totalTrials++;
 }
-
-public void endOfGame() {
-  StartCoroutine(endGame());
-
-  IEnumerator endGame() {
-    yield return new WaitForSeconds(1);
-    EndingPage.SetActive(true);
-  }
 }
 
 
@@ -317,24 +286,23 @@ public void endOfGame() {
 
 
 
-public void TrialAlternate(bool dir) {
+
+
+public void TrialAlternate(bool dir) { //to my understanding, this is changing the panel
 
   List<bool> currCorrect = new List<bool>();
 
-  if (numberTrials <= 2) {
-    trial =  Random.Range(0f, 1f) > 0.50;
+  if (numberTrials <= 5 ) { //set numberTrials to <= 100
+    trial =  Random.Range(0f, 1f) > 0.70;
     panel = trial ? 1 : 0;
-    numberTrials++;
+    numberTrials++; //what is the difference betwen nTrials and tTrials ?
     totalTrials++;
 
     if (dir == true && result == false && pressed == true)  {
-      //timeSinceStartup = Time.time;
+      timeSinceStartup = Time.time;
       currCorrect.Add(dir);
       currCorrect.Add(result);
-      correctness.Add(totalTrials, currCorrect);
-      chooseTrue();
-      //TrialPanel1.SetActive(trial);
-      //TrialPanel2.SetActive(!trial);
+			chooseCorrect();
 
     }
     if (dir == false && result == false && pressed == true)  {
@@ -345,7 +313,7 @@ public void TrialAlternate(bool dir) {
       chooseFalse();
       //TrialPanel1.SetActive(trial);
       //TrialPanel2.SetActive(!trial);
-
+      //WhistleAudio();
     }
     if (result == true && pressed == true)  {
       //timeSinceStartup = Time.time;
@@ -355,12 +323,12 @@ public void TrialAlternate(bool dir) {
       chooseFalse();
       //TrialPanel1.SetActive(trial);
       //TrialPanel2.SetActive(!trial);
+      //WhistleAudio();
     }
     if (result == true && pressed == false)  {
       //timeSinceStartup = Time.time;
       currCorrect.Add(true);
       currCorrect.Add(result);
-      correctness.Add(totalTrials, currCorrect);
       chooseTrue();
       //TrialPanel1.SetActive(trial);
       //TrialPanel2.SetActive(!trial);
@@ -451,42 +419,80 @@ public void TrialAlternate(bool dir) {
 }
 
 
-//     }
-// //
-//     else {
-//       // string result = "List contents: ";
-//       // foreach (var item in listReactionTimes)
-//       // {
-//       //   result += item.ToString() + ", ";
-//       // }
-//       //Debug.Log(result);
-//       //Debug.Log(incorrectResponse);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// public void chooseSceneGivenX(){
+//	int prob  = rnd.Next(1, 11); // creates number between 1 and 10
+//	if (prob < 8)
+// {
+//		XPage();
+// }
+// 	if (prob > 8)
+// {
+//		YPage();
+// }
+// 	}
+
+
+// public void Update()
+// {
+//	if(Input.GetMouseButtonDown(0))
+//	{
+//		if (EventSystem.current.IsPointerOverGameObject())
+//			return;
 //
-//       if (dir == true) {
-//           endOfBlock();
-//       }
-//       else {
-//         TrialPanel1.SetActive(false);
-//         TrialPanel2.SetActive(false);
-//         TrialBlockPanel.SetActive(true);
-//       }
-//
-//       numberTrials = 0;
-//       panel = 1;
-//     }
-//     //Debug.Log(reactionTime);
+//		Ray ray = Camera.main.ScreenPointToRay(Input.MousePosition);
+//		RaycastHit hitInfo;
+//}
+//}
+
+
+
+    // // Start is called before the first frame update
+    // void Start()
+    // {
+		//
+    // }
+
+    // Update is called once per frame
+//    void Update()
+//    {
+
+//    }
 // }
 
 
 
 
+public void endOfBlock() {
+  StartCoroutine(endBlock());
 
+  IEnumerator endBlock() {
+    yield return new WaitForSeconds(1);
+    TrialBlock.SetActive(true);
+  }
+}
 
+public void endOfGame() {
+  StartCoroutine(endGame());
 
-
-
-
-
+  IEnumerator endGame() {
+    yield return new WaitForSeconds(1);
+    EndingPage.SetActive(true);
+  }
+}
 
 public void OpenTaskPage(){
       SceneManager.LoadScene("TaskListPage");
