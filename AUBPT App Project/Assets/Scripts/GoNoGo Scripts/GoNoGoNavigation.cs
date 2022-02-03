@@ -230,6 +230,7 @@ public void Trials(bool dir) {
 			IEnumerator Delay() {
 				yield return new WaitForSeconds(1);
 				XPage();
+				// wait for 2 seconds regardless of whether they click
 			}
 			Trial.Add(panel);
 		}
@@ -238,6 +239,7 @@ public void Trials(bool dir) {
 			IEnumerator Delay() {
 				yield return new WaitForSeconds(1);
 				YPage();
+				// wait for 2 seconds regardless of whether they click
 			}
 			Trial.Add(panel);
 		}
