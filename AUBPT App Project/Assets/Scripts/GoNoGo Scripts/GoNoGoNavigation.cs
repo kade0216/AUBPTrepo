@@ -32,7 +32,8 @@ public float timeSinceStartup;
 
 public int correctResponse;
 public int incorrectResponse;
-public Dictionary<int, List<bool>> correctness = new Dictionary<int, List<bool>>(); // why is there a List
+public List<int> Correct = new List<int>();
+List<int> Incorrect = new List<int>();
 
 public bool result;
 public bool pressed;
@@ -42,7 +43,6 @@ public string output;
 
 // public List<float> listReactionTimes = new List<float>();
 public Dictionary<int, float> listReactionTimes = new Dictionary<int, float>();
-
 
 
 
@@ -195,17 +195,18 @@ public void DifferentPage() {
 	EndingPage.SetActive(false);
 }
 
-public void chooseCorrect() {
+public void clickCorrect() {
   reactionTime = Time.time - timeSinceStartup;
   Debug.Log(reactionTime); // potentially comment this out after
-  listReactionTimes.Add(totalTrials+1, reactionTime);
-	correctness.Add(totalTrials, currCorrect);
+  listReactionTimes.Add(numberTrials, reactionTime);
+	Correct.Add(numberTrials)
 }
 
-public void chooseInCorrect() {
+public void clickInCorrect() {
   reactionTime = Time.time - timeSinceStartup;
   Debug.Log(reactionTime); // potentially comment this out after
   listReactionTimes.Add(totalTrials+1, reactionTime);
+	Incorrect.Add(numberTrials)
 }
 
 // X --> 0
@@ -249,7 +250,6 @@ public void PracticeTrials(bool dir){
 
 
 public void Trials(bool dir) {
-	List<bool> currCorrect = new List<bool>();
 	List<int> Trial = new List<int>();
 	if (block <= 2){
 		if (numberTrials == 0){
@@ -271,6 +271,7 @@ public void Trials(bool dir) {
 				}
 				Trial.Add(panel);
 			}
+		}
 			else {
 				CrossPage();
 
@@ -314,6 +315,9 @@ public void Trials(bool dir) {
 
 				IEnumerator Delay() {
 					yield return new WaitForSeconds(2);
+					if pressed == true{
+						clickIncorrect();
+					}
 				}
 				}
 				Trial.Add(panel);
@@ -323,8 +327,13 @@ public void Trials(bool dir) {
 				IEnumerator Delay() {
 					yield return new WaitForSeconds(0.5);
 					YPage();
+
+					StartCoroutine(Delay());
 					IEnumerator Delay() {
 						yield return new WaitForSeconds(2);
+						if pressed == false{
+							clickIncorrect();
+						}
 				}
 				}
 	}
@@ -333,180 +342,15 @@ public void Trials(bool dir) {
 	}
 
 			if (numberTrials == 10){
-				TrialBlockPage();
+				TrialBlock.SetActive(true);
 			}
 	}
-	}
 	block++;
+
+	if (block > 2){
+		EndingPage.SetActive(true);
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public void TrialAlternate(bool dir) { //to my understanding, this is changing the panel
-
-  List<bool> currCorrect = new List<bool>();
-
-  if (numberTrials <= 5 ) { //set numberTrials to <= 100
-    trial =  Random.Range(0f, 1f) > 0.70;
-    panel = trial ? 1 : 0;
-    numberTrials++; //what is the difference betwen nTrials and tTrials ?
-    totalTrials++;
-
-    if (dir == true && result == false && pressed == true)  {
-      timeSinceStartup = Time.time;
-      currCorrect.Add(dir);
-      currCorrect.Add(result);
-			chooseCorrect();
-
-    }
-    if (dir == false && result == false && pressed == true)  {
-      //timeSinceStartup = Time.time;
-      currCorrect.Add(dir);
-      currCorrect.Add(result);
-      correctness.Add(totalTrials, currCorrect);
-      chooseFalse();
-      //TrialPanel1.SetActive(trial);
-      //TrialPanel2.SetActive(!trial);
-      //WhistleAudio();
-    }
-    if (result == true && pressed == true)  {
-      //timeSinceStartup = Time.time;
-      currCorrect.Add(false);
-      currCorrect.Add(result);
-      correctness.Add(totalTrials, currCorrect);
-      chooseFalse();
-      //TrialPanel1.SetActive(trial);
-      //TrialPanel2.SetActive(!trial);
-      //WhistleAudio();
-    }
-    if (result == true && pressed == false)  {
-      //timeSinceStartup = Time.time;
-      currCorrect.Add(true);
-      currCorrect.Add(result);
-      chooseTrue();
-      //TrialPanel1.SetActive(trial);
-      //TrialPanel2.SetActive(!trial);
-    }
-
-  }
-
-  else {
-    // string result = "List contents: ";
-    // foreach (var item in listReactionTimes)
-    // {
-    //   result += item.ToString() + ", ";
-    // }
-    // Debug.Log(result);
-    //Debug.Log(incorrectResponse);
-    numberTrials++;
-    totalTrials++;
-
-    if (dir == true && result == false) {
-        endOfBlock();
-        currCorrect.Add(dir);
-        currCorrect.Add(result);
-        correctness.Add(totalTrials, currCorrect);
-    }
-    else if (result == true && pressed == false) {
-        endOfBlock();
-        currCorrect.Add(true);
-        currCorrect.Add(result);
-        correctness.Add(totalTrials, currCorrect);
-    }
-    else if (dir == false && result == false) {
-        endOfBlockFalse();
-        currCorrect.Add(dir);
-        currCorrect.Add(result);
-        correctness.Add(totalTrials, currCorrect);
-    }
-    else if (result == true && pressed == true) {
-        currCorrect.Add(false);
-        currCorrect.Add(result);
-        correctness.Add(totalTrials, currCorrect);
-        endOfBlockFalse();
-    }
-    else {
-      TrialPanel1.SetActive(false);
-      TrialPanel2.SetActive(false);
-      TrialBlockPanel.SetActive(true);
-    }
-
-    string output = "Correct contents: ";
-    string combinedString;
-    foreach (var item in correctness)
-    {
-      combinedString = item.Key + ": ";
-      foreach (var it in item.Value) {
-        combinedString += it + " ";
-      }
-      output += combinedString + ", ";
-    }
-    Debug.Log(output);
-    //Debug.Log(correctness);
-
-    // string reactions = "RT contents: ";
-    // foreach (var item in listReactionTimes)
-    // {
-    //   reactions += item.ToString() + ", ";
-    // }
-    // Debug.Log(reactions);
-
-    string reactions = "RT contents: ";
-    string intermediate;
-    foreach (var item in listReactionTimes)
-    {
-      intermediate = item.Key + ": ";
-      intermediate += item.Value.ToString() + " ";
-      reactions += intermediate + ", ";
-    }
-    Debug.Log(reactions);
-
-
-    numberTrials = 0;
-    panel = 1;
-    trial =  Random.Range(0f, 1f) > 0.50;
-  }
-
-
-
-
-}
-
-
-
-
-
-
-public void endOfBlock() {
-  StartCoroutine(endBlock());
-
-  IEnumerator endBlock() {
-    yield return new WaitForSeconds(1);
-    TrialBlock.SetActive(true);
-  }
-}
-
-public void endOfGame() {
-  StartCoroutine(endGame());
-
-  IEnumerator endGame() {
-    yield return new WaitForSeconds(1);
-    EndingPage.SetActive(true);
-  }
-}
+	}
 
 public void OpenTaskPage(){
       SceneManager.LoadScene("TaskListPage");
