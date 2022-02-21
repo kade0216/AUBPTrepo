@@ -12,9 +12,8 @@ public GameObject Instructions;
 public GameObject InstructionsContinued;
 public GameObject X;
 public GameObject Y;
-public GameObject CorrectPage;
-public GameObject IncorrectPage1;
-public GameObject IncorrectPage2;
+public GameObject TwoInARow;
+public GameObject Different;
 public GameObject Cross;
 public GameObject TrialBlock;
 public GameObject EndingPage;
@@ -117,18 +116,6 @@ public void YPage() {
 	EndingPage.SetActive(false);
 }
 
-public void TwoInARow() {
-	BeforeYouStart.SetActive(false);
-	Instructions.SetActive(false);
-	InstructionsContinued.SetActive(false);
-	X.SetActive(false);
-	Y.SetActive(false);
-	TwoInARow.SetActive(false);
-	Different.SetActive(false);
-	Cross.SetActive(false);
-	TrialBlock.SetActive(false);
-	EndingPage.SetActive(false);
-}
 
 public void CrossPage() {
 	BeforeYouStart.SetActive(false);
@@ -199,14 +186,14 @@ public void clickCorrect() {
   reactionTime = Time.time - timeSinceStartup;
   Debug.Log(reactionTime); // potentially comment this out after
   listReactionTimes.Add(numberTrials, reactionTime);
-	Correct.Add(numberTrials)
+	Correct.Add(numberTrials);
 }
 
 public void clickInCorrect() {
   reactionTime = Time.time - timeSinceStartup;
   Debug.Log(reactionTime); // potentially comment this out after
   listReactionTimes.Add(totalTrials+1, reactionTime);
-	Incorrect.Add(numberTrials)
+	Incorrect.Add(numberTrials);
 }
 
 // X --> 0
@@ -218,30 +205,15 @@ public void PracticeTrials(bool dir){
 		StartCoroutine(Delay());
 		IEnumerator Delay() {
 			yield return new WaitForSeconds(2);
-	}
-		XPage();
-		StartCoroutine(Delay());
-		IEnumerator Delay() {
+			XPage();
 			yield return new WaitForSeconds(2);
-	}
-		TwoInARowPage();
-		StartCoroutine(Delay());
-		IEnumerator Delay() {
+			TwoInARowPage();
 			yield return new WaitForSeconds(6);
-	}
-		 YPage();
-		 StartCoroutine(Delay());
-		 IEnumerator Delay() {
-			 yield return new WaitForSeconds(2);
-		}
-		 XPage();
-		 StartCoroutine(Delay());
-		 IEnumerator Delay() {
-			 yield return new WaitForSeconds(2);
-		}
-		DifferentPage();
-		StartCoroutine(Delay());
-		IEnumerator Delay() {
+		  YPage();
+		  yield return new WaitForSeconds(2);
+		  XPage();
+		  yield return new WaitForSeconds(2);
+			DifferentPage();
 			yield return new WaitForSeconds(6);
 	}
 	}
@@ -257,35 +229,21 @@ public void Trials(bool dir) {
 			panel = trial ? 1 : 0;
 			if (panel == 0) {
 				CrossPage();
-
 				StartCoroutine(Delay());
-
 				IEnumerator Delay() {
-					yield return new WaitForSeconds(0.5);
+					yield return new WaitForSeconds(1);
 					XPage();
-
-					StartCoroutine(Delay());
-
-					IEnumerator Delay() {
-						yield return new WaitForSeconds(2);
-				}
+					yield return new WaitForSeconds(2);
 				Trial.Add(panel);
 			}
 		}
 			else {
 				CrossPage();
-
 				StartCoroutine(Delay());
-
 				IEnumerator Delay() {
-					yield return new WaitForSeconds(0.5);
+					yield return new WaitForSeconds(1);
 					YPage();
-
-				StartCoroutine(Delay());
-
-				IEnumerator Delay() {
 					yield return new WaitForSeconds(2);
-				}
 				}
 				Trial.Add(panel);
 			}
@@ -293,7 +251,7 @@ public void Trials(bool dir) {
 			numberTrials++;
 			totalTrials++;
 		}
-		if (numberTrials > 0 && < 10) { //set numberTrials to < 100
+		if (numberTrials > 0 && numberTrials < 10) { //set numberTrials to < 100
 			if (Trial[numberTrials - 1] == 0){
 				trial =  Random.Range(0f, 1f) > 0.70;
 				panel = trial ? 1 : 0;
@@ -304,38 +262,28 @@ public void Trials(bool dir) {
 			}
 			if (panel == 0) {
 				CrossPage();
-
 				StartCoroutine(Delay());
-
 				IEnumerator Delay() {
-					yield return new WaitForSeconds(0.5);
+					yield return new WaitForSeconds(1);
 					XPage();
-
-				StartCoroutine(Delay());
-
-				IEnumerator Delay() {
 					yield return new WaitForSeconds(2);
-					if pressed == true{
-						clickIncorrect();
-					}
 				}
-				}
+				//	if (pressed == true){
+				//		clickIncorrect();
+				//	}
 				Trial.Add(panel);
 			}
 			else {
 				CrossPage();
+				StartCoroutine(Delay());
 				IEnumerator Delay() {
-					yield return new WaitForSeconds(0.5);
+					yield return new WaitForSeconds(1);
 					YPage();
-
-					StartCoroutine(Delay());
-					IEnumerator Delay() {
-						yield return new WaitForSeconds(2);
-						if pressed == false{
-							clickIncorrect();
-						}
+					yield return new WaitForSeconds(2);
 				}
-				}
+				//	if (pressed == false) {
+					//		clickIncorrect();
+					//	}
 	}
 				numberTrials++;
 				totalTrials++;

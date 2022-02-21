@@ -1481,7 +1481,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 600993446}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -3914,7 +3914,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1927336939
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4338,9 +4338,8 @@ MonoBehaviour:
   InstructionsContinued: {fileID: 682883421}
   X: {fileID: 849969600}
   Y: {fileID: 184288541}
-  CorrectPage: {fileID: 2004775843}
-  IncorrectPage1: {fileID: 0}
-  IncorrectPage2: {fileID: 0}
+  TwoInARow: {fileID: 0}
+  Different: {fileID: 0}
   Cross: {fileID: 1782396573}
   TrialBlock: {fileID: 518396849}
   EndingPage: {fileID: 305451837}
@@ -4348,19 +4347,17 @@ MonoBehaviour:
   totalTrials: 0
   blockNumber: 1
   trial: 0
+  practice: 0
   panel: 1
+  block: 0
   reactionTime: 0
   timeSinceStartup: 0
-  probxgivenx: 0.3
-  probxgiveny: 0.7
-  probygiveny: 0.3
-  probygivenx: 0.7
   correctResponse: 0
   incorrectResponse: 0
+  Correct: 
   result: 0
   pressed: 0
   output: 
-  listReactionTimes: []
 --- !u!1 &2083079892
 GameObject:
   m_ObjectHideFlags: 0
