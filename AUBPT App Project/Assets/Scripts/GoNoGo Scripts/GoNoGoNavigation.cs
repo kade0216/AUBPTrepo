@@ -17,6 +17,7 @@ public GameObject Different;
 public GameObject Cross;
 public GameObject TrialBlock;
 public GameObject EndingPage;
+public GameObject StartRealTrials;
 
 private float waitTime;
 public int numberTrials = 0;
@@ -62,6 +63,7 @@ public void BeforeYouStartPage() {
 	Cross.SetActive(false);
 	TrialBlock.SetActive(false);
 	EndingPage.SetActive(false);
+	StartRealTrials.SetActive(false);
 }
 
 public void InstructionsPage() {
@@ -75,6 +77,7 @@ public void InstructionsPage() {
 	Cross.SetActive(false);
 	TrialBlock.SetActive(false);
 	EndingPage.SetActive(false);
+	StartRealTrials.SetActive(false);
 }
 
 public void InstructionsContinuedPage() {
@@ -88,6 +91,7 @@ public void InstructionsContinuedPage() {
 	Cross.SetActive(false);
 	TrialBlock.SetActive(false);
 	EndingPage.SetActive(false);
+	StartRealTrials.SetActive(false);
 }
 
 public void XPage() {
@@ -101,6 +105,7 @@ public void XPage() {
 	Cross.SetActive(false);
 	TrialBlock.SetActive(false);
 	EndingPage.SetActive(false);
+	StartRealTrials.SetActive(false);
 }
 
 public void YPage() {
@@ -114,6 +119,7 @@ public void YPage() {
 	Cross.SetActive(false);
 	TrialBlock.SetActive(false);
 	EndingPage.SetActive(false);
+	StartRealTrials.SetActive(false);
 }
 
 
@@ -128,6 +134,7 @@ public void CrossPage() {
 	Cross.SetActive(true);
 	TrialBlock.SetActive(false);
 	EndingPage.SetActive(false);
+	StartRealTrials.SetActive(false);
 }
 
 public void TrialBlockPage() {
@@ -141,6 +148,7 @@ public void TrialBlockPage() {
 	Cross.SetActive(false);
 	TrialBlock.SetActive(true);
 	EndingPage.SetActive(false);
+	StartRealTrials.SetActive(false);
 }
 
 public void Ending() {
@@ -154,6 +162,7 @@ public void Ending() {
 	Cross.SetActive(false);
 	TrialBlock.SetActive(false);
 	EndingPage.SetActive(true);
+	StartRealTrials.SetActive(false);
 }
 
 public void TwoInARowPage() {
@@ -167,6 +176,7 @@ public void TwoInARowPage() {
 	Cross.SetActive(false);
 	TrialBlock.SetActive(false);
 	EndingPage.SetActive(false);
+	StartRealTrials.SetActive(false);
 }
 
 public void DifferentPage() {
@@ -180,6 +190,21 @@ public void DifferentPage() {
 	Cross.SetActive(false);
 	TrialBlock.SetActive(false);
 	EndingPage.SetActive(false);
+	StartRealTrials.SetActive(false);
+}
+
+public void StartRealTrialsPage() {
+	BeforeYouStart.SetActive(false);
+	Instructions.SetActive(false);
+	InstructionsContinued.SetActive(false);
+	X.SetActive(false);
+	Y.SetActive(false);
+	TwoInARow.SetActive(false);
+	Different.SetActive(false);
+	Cross.SetActive(false);
+	TrialBlock.SetActive(false);
+	EndingPage.SetActive(false);
+	StartRealTrials.SetActive(true);
 }
 
 public void clickCorrect() {
@@ -199,59 +224,65 @@ public void clickInCorrect() {
 // X --> 0
 // Y --> 0
 
-public void PracticeTrials(bool dir){
+public void PracticeTrials(){
 	if (practice == 0){
-		XPage();
 		StartCoroutine(Delay());
 		IEnumerator Delay() {
+			XPage();
 			yield return new WaitForSeconds(2);
+			CrossPage();
+			yield return new WaitForSeconds(1);
 			XPage();
 			yield return new WaitForSeconds(2);
 			TwoInARowPage();
-			yield return new WaitForSeconds(6);
+			yield return new WaitForSeconds(5);
 		  YPage();
 		  yield return new WaitForSeconds(2);
+			CrossPage();
+			yield return new WaitForSeconds(1);
 		  XPage();
 		  yield return new WaitForSeconds(2);
 			DifferentPage();
-			yield return new WaitForSeconds(6);
+			yield return new WaitForSeconds(5);
+			StartRealTrialsPage();
 	}
 	}
 	practice++;
 	}
 
 
-public void Trials(bool dir) {
+public void Trials() {
 	List<int> Trial = new List<int>();
 	if (block <= 2){
 		if (numberTrials == 0){
 			trial =  Random.Range(0f, 1f) > 0.50;
 			panel = trial ? 1 : 0;
 			if (panel == 0) {
-				CrossPage();
 				StartCoroutine(Delay());
 				IEnumerator Delay() {
+					CrossPage();
 					yield return new WaitForSeconds(1);
 					XPage();
 					yield return new WaitForSeconds(2);
-				Trial.Add(panel);
+					Trial.Add(panel);
+					numberTrials++;
+					totalTrials++;
 			}
 		}
 			else {
-				CrossPage();
 				StartCoroutine(Delay());
 				IEnumerator Delay() {
+					CrossPage();
 					yield return new WaitForSeconds(1);
 					YPage();
 					yield return new WaitForSeconds(2);
+					Trial.Add(panel);
+					numberTrials++;
+					totalTrials++;
 				}
-				Trial.Add(panel);
 			}
-
-			numberTrials++;
-			totalTrials++;
 		}
-		if (numberTrials > 0 && numberTrials < 10) { //set numberTrials to < 100
+		else if (numberTrials > 0 && numberTrials < 100) { //set numberTrials to < 100
 			if (Trial[numberTrials - 1] == 0){
 				trial =  Random.Range(0f, 1f) > 0.70;
 				panel = trial ? 1 : 0;
@@ -289,7 +320,7 @@ public void Trials(bool dir) {
 				totalTrials++;
 	}
 
-			if (numberTrials == 10){
+			else if (numberTrials == 10){
 				TrialBlock.SetActive(true);
 			}
 	}
