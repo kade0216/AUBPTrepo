@@ -251,7 +251,22 @@ public void PracticeTrials(){
 	}
 
 
-public void Trials() {
+	// public IEnumerator RealTrials()
+//	{
+//	while (true){
+	//		CrossPage();
+	//		yield return new WaitForSeconds(1);
+//			Panel6.SetActive(true);
+//			Panel5.SetActive(false);
+//			Panel5.SetActive(true);
+	//		Panel6.SetActive(false);
+		//	}
+
+	// }
+
+
+
+public void Trials1() {
 	List<int> Trial = new List<int>();
 	if (block <= 2){
 		if (numberTrials == 0){
@@ -270,8 +285,8 @@ public void Trials() {
 			}
 		}
 			else {
-				StartCoroutine(Delay());
-				IEnumerator Delay() {
+				StartCoroutine(Delay1());
+				IEnumerator Delay1() {
 					CrossPage();
 					yield return new WaitForSeconds(1);
 					YPage();
@@ -292,9 +307,9 @@ public void Trials() {
 				panel = trial ? 0 : 1;
 			}
 			if (panel == 0) {
-				CrossPage();
-				StartCoroutine(Delay());
-				IEnumerator Delay() {
+				StartCoroutine(Delay2());
+				IEnumerator Delay2() {
+					CrossPage();
 					yield return new WaitForSeconds(1);
 					XPage();
 					yield return new WaitForSeconds(2);
@@ -305,9 +320,9 @@ public void Trials() {
 				Trial.Add(panel);
 			}
 			else {
-				CrossPage();
-				StartCoroutine(Delay());
-				IEnumerator Delay() {
+				StartCoroutine(Delay3());
+				IEnumerator Delay3() {
+					CrossPage();
 					yield return new WaitForSeconds(1);
 					YPage();
 					yield return new WaitForSeconds(2);
@@ -330,6 +345,86 @@ public void Trials() {
 		EndingPage.SetActive(true);
 	}
 	}
+
+
+
+
+	public void Trials() {
+		List<int> Trial = new List<int>();
+		if (block <= 2){
+			StartCoroutine(Delay());
+			IEnumerator Delay() {
+				if (numberTrials == 0){
+					Debug.Log(numberTrials);
+					trial =  Random.Range(0f, 1f) > 0.50;
+					panel = trial ? 1 : 0;
+					if (panel == 0) {
+							CrossPage();
+							yield return new WaitForSeconds(1);
+							XPage();
+							yield return new WaitForSeconds(2);
+							Trial.Add(panel);
+				}
+					else {
+							CrossPage();
+							yield return new WaitForSeconds(1);
+							YPage();
+							yield return new WaitForSeconds(2);
+							Trial.Add(panel);
+					}
+				}
+				else if (numberTrials > 0 && numberTrials < 10) { //set numberTrials to < 100
+					if (Trial[numberTrials - 1] == 0){
+						trial =  Random.Range(0f, 1f) > 0.70;
+						panel = trial ? 1 : 0;
+					}
+					else{
+						trial =  Random.Range(0f, 1f) > 0.70;
+						panel = trial ? 0 : 1;
+					}
+					if (panel == 0) {
+							CrossPage();
+							yield return new WaitForSeconds(1);
+							XPage();
+							yield return new WaitForSeconds(2);
+						//	if (pressed == true){
+						//		clickIncorrect();
+						//	}
+						Trial.Add(panel);
+					}
+					else {
+							CrossPage();
+							yield return new WaitForSeconds(1);
+							YPage();
+							yield return new WaitForSeconds(2);
+						//	if (pressed == false) {
+							//		clickIncorrect();
+							//	}
+			}
+			}
+
+					else if (numberTrials == 10){
+						TrialBlock.SetActive(true);
+						Debug.Log(numberTrials);
+						block++;
+					}
+		}
+		if (block > 2){
+			EndingPage.SetActive(true);
+		}
+		}
+	}
+
+
+public void TrialsLoop(){
+	for (numberTrials = 0; numberTrials < 11; numberTrials++){
+		Trials();
+		totalTrials++;
+	}
+}
+
+
+
 
 public void OpenTaskPage(){
       SceneManager.LoadScene("TaskListPage");
