@@ -1540,7 +1540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1060642201
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1685,9 +1685,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2025581184}
+      - m_Target: {fileID: 2025581178}
         m_TargetAssemblyTypeName: DelayDiscountingBehavior, Assembly-CSharp
-        m_MethodName: OpenGamePanelResting
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1717,7 +1717,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: bfeccdf4a9198460a9e1f91fb3870e55, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2151,7 +2151,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1421619854
 MonoBehaviour:
   m_ObjectHideFlags: 0
