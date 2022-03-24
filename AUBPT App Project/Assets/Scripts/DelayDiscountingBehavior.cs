@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DelayDiscountingBehavior : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class DelayDiscountingBehavior : MonoBehaviour
     public GameObject GamePanelChoosing;
     public GameObject GamePanelResting;
     public GameObject EndPanel;
+    public Text LeftText;
+    public Text RightText;
 
     //game variables
     public int adj_amount = 250;
@@ -18,12 +21,12 @@ public class DelayDiscountingBehavior : MonoBehaviour
     public int delay = 0;
     public int imm_amount = 500;
     public int delayed_amount = 1000;//fixed for now
-    public boolean imm_side;//0 == left, 1 == right
+    public int imm_side;//0 == left, 1 == right
     //^^randomize this, either 0 or 1
-    public boolean user_selection;//0 == left, 1 == right
+    public int user_selection;//0 == left, 1 == right
 
     //exported user data variables
-    public int[] indifference_points = new int[7];//index is based on delay var
+    public float[] indifference_points = new float[7];//index is based on delay var
     /*
     0 == 1 day
     1 == 1 week
@@ -49,6 +52,7 @@ public class DelayDiscountingBehavior : MonoBehaviour
         GamePanelChoosing.SetActive(false);
         GamePanelResting.SetActive(false);
         EndPanel.SetActive(false);
+        UpdateText();
     }
 
     public void OpenTaskPage(){
@@ -95,7 +99,8 @@ public class DelayDiscountingBehavior : MonoBehaviour
         }
         if(trial == 5){
             if(delay == 6) {
-                //end game
+                OpenEndPanel();
+                return;
             }
             delay++;
             trial = 0;
@@ -112,23 +117,44 @@ public class DelayDiscountingBehavior : MonoBehaviour
             adj_amount /= 2;
         }
         imm_side = 1;//randomize this, either 0 and 1
+        //for boolean values: Random.Range(0f, 1f) > 0.50;
+        //for int: Random.Range(0, 1); do i have to cast as int?
         UpdateText();
-        //rest time -- figure this out
-        OpenGamePanelChoosing();
+        StartCoroutine(RestPanelDelay());
+        IEnumerator RestPanelDelay(){
+            yield return new WaitForSeconds(1);
+            OpenGamePanelChoosing();
+            }
     }
     
     public void LeftPressed(){
-        user_selection = false;
+        user_selection = 0;
         LoadNextTrial();
     }
 
     public void RightPressed(){
-        user_selection = true;
+        user_selection = 1;
         LoadNextTrial();
     }
 
     public void UpdateText(){
-        //figure this out
+        string imm_text = "$" + imm_amount.ToString() + " NOW";
+        string delayed_text = "$" + delayed_amount.ToString() + " in ";
+        if(delay == 0) { delayed_text += "1 DAY"; }
+        else if(delay == 1) { delayed_text += "1 WEEK"; }
+        else if(delay == 2) { delayed_text += "1 MONTH"; }
+        else if(delay == 3) { delayed_text += "6 MONTHS"; }
+        else if(delay == 4) { delayed_text += "1 YEAR"; }
+        else if(delay == 5) { delayed_text += "5 YEARS"; }
+        else { delayed_text += "25 YEARS"; }
+        if(imm_side == 1){
+            LeftText.text = delayed_text;
+            RightText.text = imm_text;
+        }
+        else{
+            LeftText.text = imm_text;
+            RightText.text = delayed_text;
+        }
     }
 
     // Update is called once per frame

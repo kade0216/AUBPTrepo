@@ -1685,9 +1685,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2025581178}
+      - m_Target: {fileID: 2025581184}
         m_TargetAssemblyTypeName: DelayDiscountingBehavior, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: LeftPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1953,7 +1953,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2025581184}
         m_TargetAssemblyTypeName: DelayDiscountingBehavior, Assembly-CSharp
-        m_MethodName: OpenGamePanelResting
+        m_MethodName: RightPressed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2533,7 +2533,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2025581184}
         m_TargetAssemblyTypeName: DelayDiscountingBehavior, Assembly-CSharp
-        m_MethodName: OpenGamePanelResting
+        m_MethodName: OpenGamePanelChoosing
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2593,7 +2593,7 @@ GameObject:
   - component: {fileID: 1813524251}
   - component: {fileID: 1813524250}
   m_Layer: 5
-  m_Name: Text
+  m_Name: LeftText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2674,7 +2674,7 @@ GameObject:
   - component: {fileID: 1857825191}
   - component: {fileID: 1857825190}
   m_Layer: 5
-  m_Name: Text
+  m_Name: RightText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2879,6 +2879,23 @@ MonoBehaviour:
   GamePanelChoosing: {fileID: 1421619853}
   GamePanelResting: {fileID: 91442889}
   EndPanel: {fileID: 106508989}
+  LeftText: {fileID: 378788494}
+  RightText: {fileID: 798785212}
+  adj_amount: 250
+  trial: 0
+  delay: 0
+  imm_amount: 500
+  delayed_amount: 1000
+  imm_side: 0
+  user_selection: 0
+  indifference_points:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
 --- !u!1 &2075187330
 GameObject:
   m_ObjectHideFlags: 0
