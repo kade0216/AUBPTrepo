@@ -21,7 +21,8 @@ public class DelayDiscountingBehavior : MonoBehaviour
     public int delay = 0;
     public int imm_amount = 500;
     public int delayed_amount = 1000;//fixed for now
-    public int imm_side;//0 == left, 1 == right
+    public bool random;
+    public int imm_side; //0 == left, 1 == right
     //^^randomize this, either 0 or 1
     public int user_selection;//0 == left, 1 == right
 
@@ -52,6 +53,8 @@ public class DelayDiscountingBehavior : MonoBehaviour
         GamePanelChoosing.SetActive(false);
         GamePanelResting.SetActive(false);
         EndPanel.SetActive(false);
+        random = Random.Range(0f, 1f) > 0.50;
+        imm_side = random ? 0 : 1;
         UpdateText();
     }
 
@@ -116,7 +119,8 @@ public class DelayDiscountingBehavior : MonoBehaviour
             }
             adj_amount /= 2;
         }
-        imm_side = 1;//randomize this, either 0 and 1
+        random = Random.Range(0f, 1f) > 0.50;
+        imm_side = random ? 0 : 1;
         //for boolean values: Random.Range(0f, 1f) > 0.50;
         //for int: Random.Range(0, 1); do i have to cast as int?
         UpdateText();
