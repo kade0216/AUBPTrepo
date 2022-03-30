@@ -27,8 +27,8 @@ public class DelayDiscountingBehavior : MonoBehaviour
     public int user_selection;//0 == left, 1 == right
 
     //exported user data variables
-    public float[] indifference_points = new float[7];//index is based on delay var
-    /*
+    public float[] indifference_points = {1000,1000,1000,1000,1000,1000,1000};
+    /*delay var + indiff index meanings:
     0 == 1 day
     1 == 1 week
     2 == 1 month
