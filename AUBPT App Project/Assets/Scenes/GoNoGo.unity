@@ -5353,7 +5353,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1927336939
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6006,6 +6006,8 @@ MonoBehaviour:
   block: 0
   reactionTime: 0
   timeSinceStartup: 0
+  xcount: 0
+  ycount: 0
   correctResponse: 0
   incorrectResponse: 0
   Correct: 
