@@ -301,27 +301,27 @@ public void PracticeTrials(){
 		StartCoroutine(Delay());
 		IEnumerator Delay() {
 			XPracticePage();
-			yield return new WaitForSeconds(0.4f);
+			yield return new WaitForSeconds(1);
 			CrossPage();
 			yield return new WaitForSeconds(1);
 			XPracticePage();
-			yield return new WaitForSeconds(0.4f);
+			yield return new WaitForSeconds(1);
 			TwoInARowPage();
 			yield return new WaitForSeconds(5);
 		  YPracticePage();
-		  yield return new WaitForSeconds(0.4f);
+		  yield return new WaitForSeconds(1);
 			CrossPage();
 			yield return new WaitForSeconds(1);
 		  XPracticePage();
-		  yield return new WaitForSeconds(0.4f);
+		  yield return new WaitForSeconds(1);
 			CrossPage();
 			yield return new WaitForSeconds(1);
 			YPracticePage();
-		 	yield return new WaitForSeconds(0.4f);
+		 	yield return new WaitForSeconds(1);
 		 	CrossPage();
 		 	yield return new WaitForSeconds(1);
 		 	XPracticePage();
-		 	yield return new WaitForSeconds(0.4f);
+		 	yield return new WaitForSeconds(1);
 			DifferentPage();
 			yield return new WaitForSeconds(5);
 			StartRealTrialsPage();
@@ -440,7 +440,7 @@ public void Block1() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 1
@@ -449,7 +449,7 @@ public void Block1() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 2
@@ -458,7 +458,7 @@ public void Block1() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 3
@@ -467,7 +467,7 @@ public void Block1() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 4
@@ -476,7 +476,7 @@ public void Block1() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 5
@@ -486,7 +486,7 @@ public void Block1() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 6
@@ -496,7 +496,7 @@ public void Block1() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 7
@@ -505,7 +505,7 @@ public void Block1() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 8
@@ -515,7 +515,7 @@ public void Block1() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 9
@@ -525,7 +525,7 @@ public void Block1() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 10
@@ -534,7 +534,7 @@ public void Block1() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 11
@@ -544,7 +544,7 @@ public void Block1() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 12
@@ -553,7 +553,7 @@ public void Block1() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 13
@@ -563,7 +563,7 @@ public void Block1() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 14
@@ -572,7 +572,7 @@ public void Block1() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 15
@@ -581,7 +581,7 @@ public void Block1() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 16
@@ -590,7 +590,7 @@ public void Block1() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 17
@@ -599,7 +599,7 @@ public void Block1() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 18
@@ -608,7 +608,7 @@ public void Block1() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 19
@@ -617,7 +617,7 @@ public void Block1() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 20
@@ -626,7 +626,7 @@ public void Block1() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 21
@@ -635,7 +635,7 @@ public void Block1() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 22
@@ -644,7 +644,7 @@ public void Block1() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 23
@@ -653,7 +653,7 @@ public void Block1() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 24
@@ -662,7 +662,7 @@ public void Block1() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 25
@@ -671,7 +671,7 @@ public void Block1() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 26
@@ -680,7 +680,7 @@ public void Block1() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 27
@@ -689,7 +689,7 @@ public void Block1() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 28
@@ -698,7 +698,7 @@ public void Block1() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 29
@@ -707,7 +707,7 @@ public void Block1() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				TrialBlockPage();
@@ -732,7 +732,7 @@ public void Block2() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 31
@@ -741,7 +741,7 @@ public void Block2() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 32
@@ -750,7 +750,7 @@ public void Block2() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 33
@@ -759,7 +759,7 @@ public void Block2() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 34
@@ -768,7 +768,7 @@ public void Block2() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 35
@@ -778,7 +778,7 @@ public void Block2() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 36
@@ -788,7 +788,7 @@ public void Block2() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 37
@@ -797,7 +797,7 @@ public void Block2() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 38
@@ -807,7 +807,7 @@ public void Block2() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 39
@@ -817,7 +817,7 @@ public void Block2() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 40
@@ -826,7 +826,7 @@ public void Block2() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 41
@@ -836,7 +836,7 @@ public void Block2() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 42
@@ -845,7 +845,7 @@ public void Block2() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 43
@@ -855,7 +855,7 @@ public void Block2() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 44
@@ -864,7 +864,7 @@ public void Block2() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 45
@@ -873,7 +873,7 @@ public void Block2() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 46
@@ -882,7 +882,7 @@ public void Block2() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 47
@@ -891,7 +891,7 @@ public void Block2() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 48
@@ -900,7 +900,7 @@ public void Block2() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 49
@@ -909,7 +909,7 @@ public void Block2() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 50
@@ -918,7 +918,7 @@ public void Block2() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 51
@@ -927,7 +927,7 @@ public void Block2() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 52
@@ -936,7 +936,7 @@ public void Block2() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 53
@@ -945,7 +945,7 @@ public void Block2() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 54
@@ -954,7 +954,7 @@ public void Block2() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 55
@@ -963,7 +963,7 @@ public void Block2() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 56
@@ -972,7 +972,7 @@ public void Block2() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 57
@@ -981,7 +981,7 @@ public void Block2() {
 				numberTrials++;
 				ycount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 58
@@ -990,7 +990,7 @@ public void Block2() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 59
@@ -999,7 +999,7 @@ public void Block2() {
 				numberTrials++;
 				xcount++;
 				Debug.Log(numberTrials);
-				yield return new WaitForSeconds(0.4f);
+				yield return new WaitForSeconds(1);
 				CrossPage();
 				yield return new WaitForSeconds(0.5f);
 				// 60
