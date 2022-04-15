@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StopSignalNavigation : MonoBehaviour
+public class StopSignalNew : MonoBehaviour
 {
 
 //Create variables to tell which objects will be referenced
@@ -14,16 +14,20 @@ public GameObject Panel4;
 public GameObject Panel5;
 public GameObject Panel6;
 public GameObject Panel7;
+public GameObject Panel7a;
 public GameObject Panel8;
 
+public GameObject FixationPointPanel;
 public GameObject TrialPanel1;
 public GameObject TrialPanel2;
+public GameObject StopPanel1;
+public GameObject StopPanel2;
 
 public GameObject CorrectResponsePanel;
 public GameObject IncorrectResponsePanel;
 public GameObject TrialBlockPanel;
 
-public AudioSource audioSource;
+//public AudioSource audioSource;
 
 
 public float delay;
@@ -141,7 +145,13 @@ public void PanelSeven(){
     Panel6.SetActive(false);
     Panel7.SetActive(true);
     Panel8.SetActive(false);
-    audioSource.PlayDelayed(delay);
+    StartCoroutine(stopDemo());
+
+    IEnumerator stopDemo() {
+      yield return new WaitForSeconds(2);
+      Panel7.SetActive(false);
+      Panel7a.SetActive(true);
+    }
 
 }
 
@@ -186,13 +196,16 @@ public void TrialPanel(){
 
 
 public void chooseNeither() {
-  if (pressed == false && numberTrials <= 2) {
+  if (pressed == false && numberTrials <= 10) {
     List<bool> currCorrect = new List<bool>();
     numberTrials++;
     totalTrials++;
     currCorrect.Add(true);
     currCorrect.Add(result);
     correctness.Add(totalTrials, currCorrect);
+    delay += (float)0.05;
+    trial =  Random.Range(0f, 1f) > 0.50;
+    panel = trial ? 1 : 0;
     chooseTrue();
   }
   else {
@@ -288,10 +301,13 @@ public void chooseTrue() {
     CorrectResponsePanel.SetActive(true);
     yield return new WaitForSeconds(1);
     CorrectResponsePanel.SetActive(false);
+    // FixationPointPanel.SetActive(true);
+    // yield return new WaitForSeconds(1);
+    // FixationPointPanel.SetActive(false);
     TrialPanel1.SetActive(trial);
     TrialPanel2.SetActive(!trial);
     timeSinceStartup = Time.time;
-    delay += (float)0.05;
+    // delay += (float)0.05;
     WhistleAudio();
   }
 }
@@ -302,12 +318,12 @@ public void chooseFalse() {
   IEnumerator BadJob() {
     yield return new WaitForSeconds(0);
     IncorrectResponsePanel.SetActive(true);
-    yield return new WaitForSeconds((float)0.5);
+    yield return new WaitForSeconds(1);
     IncorrectResponsePanel.SetActive(false);
     TrialPanel1.SetActive(trial);
     TrialPanel2.SetActive(!trial);
     timeSinceStartup = Time.time;
-    delay -= (float)0.05;
+    // delay -= (float)0.05;
     WhistleAudio();
   }
 
@@ -348,7 +364,7 @@ public void TrialAlternate(bool dir) {
 
   List<bool> currCorrect = new List<bool>();
 
-  if (numberTrials <= 2) {
+  if (numberTrials <= 10) {
     trial =  Random.Range(0f, 1f) > 0.50;
     panel = trial ? 1 : 0;
     numberTrials++;
@@ -379,6 +395,7 @@ public void TrialAlternate(bool dir) {
       currCorrect.Add(false);
       currCorrect.Add(result);
       correctness.Add(totalTrials, currCorrect);
+      delay -= (float)0.05;
       chooseFalse();
       //TrialPanel1.SetActive(trial);
       //TrialPanel2.SetActive(!trial);
@@ -508,7 +525,7 @@ public void TrialAlternate(bool dir) {
 
 public void WhistleAudio() {
 
-  result = Random.Range(0f, 1f) > 0.75; //%25 percent chance to be true
+  result = Random.Range(0f, 1f) > 0.4; //%25 percent chance to be true
 
 
   // System.Random random = new System.Random();
@@ -517,14 +534,28 @@ public void WhistleAudio() {
   // If clicked, it is wrong - if not clicked, it is right
 
   if (result) {
-    audioSource.PlayDelayed(delay);
-    pressed = false;
+    // audioSource.PlayDelayed(delay);
     StartCoroutine(StopSignalDelay());
     // TrialAlternate(true);
   }
 
   IEnumerator StopSignalDelay() {
+    Debug.Log(delay);
+    yield return new WaitForSeconds(delay);
+    TrialPanel1.SetActive(false);
+    TrialPanel2.SetActive(false);
+    pressed = false;
+    if (panel == 1) {
+      StopPanel1.SetActive(true);
+    }
+    if (panel == 0) {
+      StopPanel2.SetActive(true);
+    }
+
     yield return new WaitForSeconds(3);
+    StopPanel1.SetActive(false);
+    StopPanel2.SetActive(false);
+
     chooseNeither();
     result = false;
     //TrialAlternate(true);
@@ -532,8 +563,6 @@ public void WhistleAudio() {
     //chooseTrue();
     //TrialAlternate(true);
   }
-
-
 
   Debug.Log(delay);
 }
