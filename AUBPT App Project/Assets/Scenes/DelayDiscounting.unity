@@ -586,7 +586,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &126951464
 RectTransform:
   m_ObjectHideFlags: 0
@@ -719,10 +719,11 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "If you'd prefer the reward on the left, press anywhere on the left side
-    of the screen. If you'd prefer the reward on the right, press anywhere on the
-    right side of the screen.\n\nRemember that the rewards are hypothetical\u2014you
-    will not receive any of the rewards that you choose. Simply imagine what you
-    would choose if you were given these options in real life."
+    of the screen (or press the \"v\" key). If you'd prefer the reward on the right,
+    press anywhere on the right side of the screen (or press the \"b\" key).\n\nRemember
+    that the rewards are hypothetical\u2014you will not receive any of the rewards
+    that you choose. Simply imagine what you would choose if you were given these
+    options in real life."
 --- !u!222 &190596319
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -845,8 +846,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -215, y: -50}
-  m_SizeDelta: {x: 300, y: 70}
+  m_AnchoredPosition: {x: -215, y: 0}
+  m_SizeDelta: {x: 300, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &378788494
 MonoBehaviour:
@@ -1133,7 +1134,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Delay Discounting Task
+  m_Text: Money Selection Task
 --- !u!222 &414173430
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1563,8 +1564,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 215, y: -50}
-  m_SizeDelta: {x: 300, y: 70}
+  m_AnchoredPosition: {x: 215, y: 0}
+  m_SizeDelta: {x: 300, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &798785212
 MonoBehaviour:
@@ -1644,7 +1645,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -169}
+  m_AnchoredPosition: {x: 0, y: -129}
   m_SizeDelta: {x: 137.22, y: 30.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &838693610
@@ -1813,16 +1814,16 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'For each choice, you will have 3 minutes to make a selection. Once 2 minutes
     have passed without a selection, a countdown timer will appear in the bottom
-    right corner of the screen (example shown here). This timer will count down from
-    60 to 0 seconds.
+    center of the screen (example shown here). This timer will count down from 60
+    to 0 seconds.
 
 
-    If no choice is made by the time the countdown reaches
-    0, the task will be reset.
+    If no choice is made by the time the countdown reaches 0,
+    the task will be reset.
 
 
-    When you are ready to start the task, press
-    the button below.'
+    When you are ready to start the task, press the
+    button below.'
 --- !u!222 &948585669
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1865,8 +1866,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 80}
-  m_SizeDelta: {x: 539.2725, y: 70}
+  m_AnchoredPosition: {x: 0, y: 110}
+  m_SizeDelta: {x: 539.2725, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1009408513
 MonoBehaviour:
@@ -1944,7 +1945,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -30.3}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1037971088
@@ -2149,7 +2150,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2025581184}
         m_TargetAssemblyTypeName: DelayDiscountingBehavior, Assembly-CSharp
-        m_MethodName: LeftPressed
+        m_MethodName: LeftChoice
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2364,7 +2365,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 306, y: -192.16}
+  m_AnchoredPosition: {x: 0.0000095367, y: -184.66}
   m_SizeDelta: {x: 154.2, y: 38.6771}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1294413039
@@ -2394,7 +2395,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 2
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -2494,7 +2495,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2025581184}
         m_TargetAssemblyTypeName: DelayDiscountingBehavior, Assembly-CSharp
-        m_MethodName: RightPressed
+        m_MethodName: RightChoice
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2692,7 +2693,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1421619854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2791,8 +2792,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 539.2725, y: 70}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 35}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1430805281
 MonoBehaviour:
@@ -2870,7 +2871,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 306, y: -192.16}
+  m_AnchoredPosition: {x: 0, y: -184.66}
   m_SizeDelta: {x: 154.2, y: 38.6771}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1499516750
@@ -2900,7 +2901,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40
-    m_Alignment: 2
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -3771,6 +3772,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fefcd507019a4c04a77a49c7f6366bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DDEntry: {fileID: 0}
+  GoNoGoEntry: {fileID: 0}
+  StopSignalEntry: {fileID: 0}
+  DD_task_complete: 0
 --- !u!114 &2025581184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3803,6 +3808,7 @@ MonoBehaviour:
   user_selection: 0
   start_time: 0
   on_choice: 0
+  task_complete: 0
   indifference_points: 00000000000000000000000000000000000000000000000000000000
 --- !u!1 &2075187330
 GameObject:

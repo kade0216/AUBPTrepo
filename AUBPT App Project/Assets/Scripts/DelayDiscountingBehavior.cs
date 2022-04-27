@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class DelayDiscountingBehavior : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class DelayDiscountingBehavior : MonoBehaviour
     public int user_selection;//0 == left, 1 == right
     public float start_time;
     public bool on_choice = false;
+    public bool task_complete = false;
 
     //exported user data variables
     public int[] indifference_points = new int[7];
@@ -50,8 +52,7 @@ public class DelayDiscountingBehavior : MonoBehaviour
     public int value_25yr;*/
     
     // default app startup
-    void Start() //login page launches when user starts app
-    {
+    void Start(){
         WelcomePanel.SetActive(true);
         InstructionsPanel.SetActive(false);
         InstructionsTimerPanel.SetActive(false);
@@ -70,6 +71,7 @@ public class DelayDiscountingBehavior : MonoBehaviour
     }
 
     public void OpenTaskPage(){
+        task_complete = true;
         SceneManager.LoadScene("TaskListPage");
     }
 
@@ -173,12 +175,12 @@ public class DelayDiscountingBehavior : MonoBehaviour
             }
     }
     
-    public void LeftPressed(){
+    public void LeftChoice(){
         user_selection = 0;
         LoadNextTrial();
     }
 
-    public void RightPressed(){
+    public void RightChoice(){
         user_selection = 1;
         LoadNextTrial();
     }
@@ -204,8 +206,8 @@ public class DelayDiscountingBehavior : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update(){
+        //timer on choice page
         int time_left = (int)(180.0 - (Time.time - start_time));
         if(on_choice && time_left <= 60){
             TimerText.text = time_left.ToString();
@@ -215,5 +217,9 @@ public class DelayDiscountingBehavior : MonoBehaviour
                 OpenAltEndPanel();
             }
         }
+
+        //key pressed update on choice page
+        if (Input.GetKeyUp(KeyCode.V)) { LeftChoice(); }
+        if (Input.GetKeyUp(KeyCode.B)) { RightChoice(); }
     }
 }

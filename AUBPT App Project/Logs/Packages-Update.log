@@ -74,3 +74,14 @@ Update Mode: updateDependencies
 The following packages were updated:
   com.unity.2d.psdimporter from version 4.1.2 to 6.0.1
   com.unity.2d.spriteshape from version 5.1.6 to 7.0.2
+
+=== Fri Apr 22 14:53:13 2022
+
+Packages were changed.
+Update Mode: updateDependencies
+
+The following packages were added:
+  com.unity.ads@3.7.5
+  com.unity.analytics@3.6.11
+  com.unity.purchasing@3.2.2
+  com.unity.xr.legacyinputhelpers@2.1.8
