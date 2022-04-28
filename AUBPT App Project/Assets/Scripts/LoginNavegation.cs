@@ -19,7 +19,11 @@ public GameObject SignUpClinician;
 void Start() //login page launches when user starts app
 {
     LoginPage.SetActive(true);
-        
+
+    //setting compeltion vars for tasks
+    StateNameController.DD_task_complete = false;
+    StateNameController.GoNoGo_task_complete = false;
+    StateNameController.StopSignal_task_complete = false;
 }
 
 public void WhoIm(){ 

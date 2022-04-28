@@ -30,10 +30,7 @@ public class DelayDiscountingBehavior : MonoBehaviour
     public int user_selection;//0 == left, 1 == right
     public float start_time;
     public bool on_choice = false;
-    public bool task_complete = false;
 
-    //exported user data variables
-    public int[] indifference_points = new int[7];
     /*delay var + indiff index meanings:
     0 == 1 day
     1 == 1 week
@@ -43,14 +40,6 @@ public class DelayDiscountingBehavior : MonoBehaviour
     5 == 5 years
     6 == 25 years*/
 
-    /*public int value_1day;
-    public int value_1week;
-    public int value_1mo;
-    public int value_6mo;
-    public int value_1yr;
-    public int value_5yr;
-    public int value_25yr;*/
-    
     // default app startup
     void Start(){
         WelcomePanel.SetActive(true);
@@ -60,18 +49,19 @@ public class DelayDiscountingBehavior : MonoBehaviour
         GamePanelResting.SetActive(false);
         EndPanel.SetActive(false);
         AltEndPanel.SetActive(false);
-
+        
         random = Random.Range(0f, 1f) > 0.50;
         imm_side = random ? 0 : 1;
         UpdateText();
 
+        //StateNameController.indifference_points = new int[7];
         for(int a = 0; a < 7; a++){
-            indifference_points[a] = 1000;
+            StateNameController.indifference_points[a] = 1000;
         }
     }
 
     public void OpenTaskPage(){
-        task_complete = true;
+        StateNameController.DD_task_complete = true;
         SceneManager.LoadScene("TaskListPage");
     }
 
@@ -144,7 +134,7 @@ public class DelayDiscountingBehavior : MonoBehaviour
         TimerText.text = "";
         trial ++;
         if(user_selection == imm_side){
-            indifference_points[delay] = imm_amount;
+            StateNameController.indifference_points[delay] = imm_amount;
         }
         if(trial == 5){
             if(delay == 6) {
@@ -176,13 +166,17 @@ public class DelayDiscountingBehavior : MonoBehaviour
     }
     
     public void LeftChoice(){
-        user_selection = 0;
-        LoadNextTrial();
+        if(on_choice) {
+            user_selection = 0;
+            LoadNextTrial();
+        }
     }
 
     public void RightChoice(){
-        user_selection = 1;
-        LoadNextTrial();
+        if(on_choice) {
+            user_selection = 1;
+            LoadNextTrial();
+        }
     }
 
     public void UpdateText(){

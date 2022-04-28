@@ -9,22 +9,25 @@ public class TaskList : MonoBehaviour
   public GameObject DDEntry;
   public GameObject GoNoGoEntry;
   public GameObject StopSignalEntry;
-  
-  //task completion vars
-  public bool DD_task_complete = false;
-  //do same for other tasks
 
   // default app startup
   void Start(){
-      DDEntry.SetActive(true);
-      GoNoGoEntry.SetActive(true);
-      StopSignalEntry.SetActive(true);
-
-      //DD_task_complete = GameObject.Find("DDCanvas").GetComponent<DelayDiscountingBehavior>().task_complete;
-      //do same for other tasks
-      
-      //if(DD_task_complete) { DDEntry.SetActive(false); }
-      //do same for other tasks
+      if(StateNameController.DD_task_complete) {
+          DDEntry.SetActive(false);
+          //remove below stuff, just using to test
+          Debug.Log("0: "+StateNameController.indifference_points[0]);
+          Debug.Log("1: "+StateNameController.indifference_points[1]);
+          Debug.Log("2: "+StateNameController.indifference_points[2]);
+          Debug.Log("3: "+StateNameController.indifference_points[3]);
+          Debug.Log("4: "+StateNameController.indifference_points[4]);
+          Debug.Log("5: "+StateNameController.indifference_points[5]);
+          Debug.Log("6: "+StateNameController.indifference_points[6]);
+          }
+      else { DDEntry.SetActive(true); }
+      if(StateNameController.GoNoGo_task_complete) { GoNoGoEntry.SetActive(false); }
+      else { GoNoGoEntry.SetActive(true); }
+      if(StateNameController.StopSignal_task_complete) { StopSignalEntry.SetActive(false); }
+      else { StopSignalEntry.SetActive(true); }
   }
   
   public void OpenLogin(){
