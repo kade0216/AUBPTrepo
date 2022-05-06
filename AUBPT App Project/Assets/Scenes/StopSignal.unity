@@ -2312,7 +2312,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &432168310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6415,9 +6415,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StopSignalNavigation, Assembly-CSharp
-        m_MethodName: TrialPanel
+      - m_Target: {fileID: 573037768}
+        m_TargetAssemblyTypeName: StopSignalNew, Assembly-CSharp
+        m_MethodName: OpenTaskPage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

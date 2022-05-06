@@ -197,6 +197,8 @@ public void Ending() {
 	StartRealTrials.SetActive(false);
 	XPractice.SetActive(false);
 	YPractice.SetActive(false);
+
+	StateNameController.GoNoGo_task_complete = true;
 }
 
 public void TwoInARowPage() {

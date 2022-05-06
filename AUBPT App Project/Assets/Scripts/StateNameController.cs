@@ -17,5 +17,7 @@ public class StateNameController : MonoBehaviour
 
 
     //stop signal
+    public static Dictionary<int, List<bool>> correctness = new Dictionary<int, List<bool>>();
+    public static Dictionary<int, float> listReactionTimes = new Dictionary<int, float>();
 
 }

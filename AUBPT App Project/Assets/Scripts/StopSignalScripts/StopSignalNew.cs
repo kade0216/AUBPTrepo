@@ -49,7 +49,7 @@ public float timeSinceStartup;
 //public int correctResponse;
 //public int incorrectResponse;
 //public List<List<bool>> correctness = new List<List<bool>>();
-public Dictionary<int, List<bool>> correctness = new Dictionary<int, List<bool>>();
+//public Dictionary<int, List<bool>> correctness = new Dictionary<int, List<bool>>();
 
 public bool result;
 public bool pressed;
@@ -57,7 +57,7 @@ public bool pressed;
 public string output;
 
 //public List<float> listReactionTimes = new List<float>();
-public Dictionary<int, float> listReactionTimes = new Dictionary<int, float>();
+//public Dictionary<int, float> listReactionTimes = new Dictionary<int, float>();
 
 
 
@@ -66,7 +66,7 @@ public Dictionary<int, float> listReactionTimes = new Dictionary<int, float>();
 void Start() //login page launches when user starts app
 {
     Panel1.SetActive(true);
-
+    //set active false for other panels
 
 }
 
@@ -202,7 +202,7 @@ public void chooseNeither() {
     totalTrials++;
     currCorrect.Add(true);
     currCorrect.Add(result);
-    correctness.Add(totalTrials, currCorrect);
+    StateNameController.correctness.Add(totalTrials, currCorrect);
     delay += (float)0.05;
     trial =  Random.Range(0f, 1f) > 0.50;
     panel = trial ? 1 : 0;
@@ -222,7 +222,7 @@ public void chooseRight() {
   reactionTime = Time.time - timeSinceStartup;
   // Debug.Log(reactionTime);
   //
-  listReactionTimes.Add(totalTrials+1, reactionTime);
+  StateNameController.listReactionTimes.Add(totalTrials+1, reactionTime);
 
   pressed = true;
 
@@ -263,7 +263,7 @@ public void chooseLeft() {
   // Key is the panel number and value is whether response is True or False
   // String correct or wrong
 
-  listReactionTimes.Add(totalTrials+1, reactionTime);
+  StateNameController.listReactionTimes.Add(totalTrials+1, reactionTime);
   pressed = true;
 
   if (panel == 1 && result == false) {
@@ -341,6 +341,7 @@ public void endOfBlock() {
     yield return new WaitForSeconds(1);
     CorrectResponsePanel.SetActive(false);
     TrialBlockPanel.SetActive(true);
+    StateNameController.StopSignal_task_complete = true;
   }
 }
 
@@ -355,6 +356,7 @@ public void endOfBlockFalse() {
     yield return new WaitForSeconds(1);
     IncorrectResponsePanel.SetActive(false);
     TrialBlockPanel.SetActive(true);
+    StateNameController.StopSignal_task_complete = true;
   }
 
 
@@ -374,7 +376,7 @@ public void TrialAlternate(bool dir) {
       //timeSinceStartup = Time.time;
       currCorrect.Add(dir);
       currCorrect.Add(result);
-      correctness.Add(totalTrials, currCorrect);
+      StateNameController.correctness.Add(totalTrials, currCorrect);
       chooseTrue();
       //TrialPanel1.SetActive(trial);
       //TrialPanel2.SetActive(!trial);
@@ -384,7 +386,7 @@ public void TrialAlternate(bool dir) {
       //timeSinceStartup = Time.time;
       currCorrect.Add(dir);
       currCorrect.Add(result);
-      correctness.Add(totalTrials, currCorrect);
+      StateNameController.correctness.Add(totalTrials, currCorrect);
       chooseFalse();
       //TrialPanel1.SetActive(trial);
       //TrialPanel2.SetActive(!trial);
@@ -394,7 +396,7 @@ public void TrialAlternate(bool dir) {
       //timeSinceStartup = Time.time;
       currCorrect.Add(false);
       currCorrect.Add(result);
-      correctness.Add(totalTrials, currCorrect);
+      StateNameController.correctness.Add(totalTrials, currCorrect);
       delay -= (float)0.05;
       chooseFalse();
       //TrialPanel1.SetActive(trial);
@@ -405,7 +407,7 @@ public void TrialAlternate(bool dir) {
       //timeSinceStartup = Time.time;
       currCorrect.Add(true);
       currCorrect.Add(result);
-      correctness.Add(totalTrials, currCorrect);
+      StateNameController.correctness.Add(totalTrials, currCorrect);
       chooseTrue();
       //TrialPanel1.SetActive(trial);
       //TrialPanel2.SetActive(!trial);
@@ -415,7 +417,7 @@ public void TrialAlternate(bool dir) {
 
   else {
     // string result = "List contents: ";
-    // foreach (var item in listReactionTimes)
+    // foreach (var item in StateNameController.listReactionTimes)
     // {
     //   result += item.ToString() + ", ";
     // }
@@ -428,24 +430,24 @@ public void TrialAlternate(bool dir) {
         endOfBlock();
         currCorrect.Add(dir);
         currCorrect.Add(result);
-        correctness.Add(totalTrials, currCorrect);
+        StateNameController.correctness.Add(totalTrials, currCorrect);
     }
     else if (result == true && pressed == false) {
         endOfBlock();
         currCorrect.Add(true);
         currCorrect.Add(result);
-        correctness.Add(totalTrials, currCorrect);
+        StateNameController.correctness.Add(totalTrials, currCorrect);
     }
     else if (dir == false && result == false) {
         endOfBlockFalse();
         currCorrect.Add(dir);
         currCorrect.Add(result);
-        correctness.Add(totalTrials, currCorrect);
+        StateNameController.correctness.Add(totalTrials, currCorrect);
     }
     else if (result == true && pressed == true) {
         currCorrect.Add(false);
         currCorrect.Add(result);
-        correctness.Add(totalTrials, currCorrect);
+        StateNameController.correctness.Add(totalTrials, currCorrect);
         endOfBlockFalse();
     }
     else {
@@ -456,7 +458,7 @@ public void TrialAlternate(bool dir) {
 
     string output = "Correct contents: ";
     string combinedString;
-    foreach (var item in correctness)
+    foreach (var item in StateNameController.correctness)
     {
       combinedString = item.Key + ": ";
       foreach (var it in item.Value) {
@@ -465,10 +467,10 @@ public void TrialAlternate(bool dir) {
       output += combinedString + ", ";
     }
     Debug.Log(output);
-    //Debug.Log(correctness);
+    //Debug.Log(StateNameController.correctness);
 
     // string reactions = "RT contents: ";
-    // foreach (var item in listReactionTimes)
+    // foreach (var item in StateNameController.listReactionTimes)
     // {
     //   reactions += item.ToString() + ", ";
     // }
@@ -476,7 +478,7 @@ public void TrialAlternate(bool dir) {
 
     string reactions = "RT contents: ";
     string intermediate;
-    foreach (var item in listReactionTimes)
+    foreach (var item in StateNameController.listReactionTimes)
     {
       intermediate = item.Key + ": ";
       intermediate += item.Value.ToString() + " ";
@@ -500,7 +502,7 @@ public void TrialAlternate(bool dir) {
 // //
 //     else {
 //       // string result = "List contents: ";
-//       // foreach (var item in listReactionTimes)
+//       // foreach (var item in StateNameController.listReactionTimes)
 //       // {
 //       //   result += item.ToString() + ", ";
 //       // }
@@ -559,7 +561,7 @@ public void WhistleAudio() {
     chooseNeither();
     result = false;
     //TrialAlternate(true);
-    //correctness.Add(totalTrials, dir, result);
+    //StateNameController.correctness.Add(totalTrials, dir, result);
     //chooseTrue();
     //TrialAlternate(true);
   }
