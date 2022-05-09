@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class StopSignalNew : MonoBehaviour
 {
@@ -53,21 +55,32 @@ public float timeSinceStartup;
 
 public bool result;
 public bool pressed;
-
+public bool onChoice = false;
 public string output;
 
 //public List<float> listReactionTimes = new List<float>();
 //public Dictionary<int, float> listReactionTimes = new Dictionary<int, float>();
 
-
-
-
 // default app startup
 void Start() //login page launches when user starts app
 {
     Panel1.SetActive(true);
-    //set active false for other panels
-
+    Panel2.SetActive(false);
+    Panel3.SetActive(false);
+    Panel4.SetActive(false);
+    Panel5.SetActive(false);
+    Panel6.SetActive(false);
+    Panel7.SetActive(false);
+    Panel7a.SetActive(false);
+    Panel8.SetActive(false);
+    FixationPointPanel.SetActive(false);
+    TrialPanel1.SetActive(false);
+    TrialPanel2.SetActive(false);
+    StopPanel1.SetActive(false);
+    StopPanel2.SetActive(false);
+    CorrectResponsePanel.SetActive(false);
+    IncorrectResponsePanel.SetActive(false);
+    TrialBlockPanel.SetActive(false);
 }
 
 public void PanelTwo(){
@@ -181,6 +194,7 @@ public void TrialPanel(){
     TrialBlockPanel.SetActive(false);
     TrialPanel1.SetActive(trial);
     TrialPanel2.SetActive(!trial);
+    onChoice = true;
     if (trial == true) {
       panel = 1;
     }
@@ -364,6 +378,8 @@ public void endOfBlockFalse() {
 
 public void TrialAlternate(bool dir) {
 
+  onChoice = false;
+
   List<bool> currCorrect = new List<bool>();
 
   if (numberTrials <= 10) {
@@ -412,6 +428,7 @@ public void TrialAlternate(bool dir) {
       //TrialPanel1.SetActive(trial);
       //TrialPanel2.SetActive(!trial);
     }
+    onChoice = true;
 
   }
 
@@ -569,12 +586,15 @@ public void WhistleAudio() {
   Debug.Log(delay);
 }
 
-
-
-
-
 public void OpenTaskPage(){
-      SceneManager.LoadScene("TaskListPage");
-  }
+  SceneManager.LoadScene("TaskListPage");
+}
+
+//called once per frame
+void Update(){
+  //key pressed update on choice page
+  if (Input.GetKeyUp(KeyCode.LeftArrow)) { chooseLeft(); }
+  if (Input.GetKeyUp(KeyCode.RightArrow)) { chooseRight(); }
+}
 
 }
