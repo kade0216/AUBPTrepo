@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class TaskList : MonoBehaviour
 {
@@ -10,24 +12,19 @@ public class TaskList : MonoBehaviour
   public GameObject GoNoGoEntry;
   public GameObject StopSignalEntry;
 
+  public Text UserInfoText; //shows participant info
+
   // default app startup
   void Start(){
-      if(StateNameController.DD_task_complete) {
-          DDEntry.SetActive(false);
-          //remove below stuff, just using to test
-          Debug.Log("0: "+StateNameController.indifference_points[0]);
-          Debug.Log("1: "+StateNameController.indifference_points[1]);
-          Debug.Log("2: "+StateNameController.indifference_points[2]);
-          Debug.Log("3: "+StateNameController.indifference_points[3]);
-          Debug.Log("4: "+StateNameController.indifference_points[4]);
-          Debug.Log("5: "+StateNameController.indifference_points[5]);
-          Debug.Log("6: "+StateNameController.indifference_points[6]);
-          }
+      if(StateNameController.DD_task_complete) { DDEntry.SetActive(false); }
       else { DDEntry.SetActive(true); }
       if(StateNameController.GoNoGo_task_complete) { GoNoGoEntry.SetActive(false); }
       else { GoNoGoEntry.SetActive(true); }
       if(StateNameController.StopSignal_task_complete) { StopSignalEntry.SetActive(false); }
       else { StopSignalEntry.SetActive(true); }
+
+      if(StateNameController.platform == "MTURK"){ UserInfoText.text = "Participant ID: " + StateNameController.MTURK_participant_ID; }
+      else{}
   }
   
   public void OpenLogin(){

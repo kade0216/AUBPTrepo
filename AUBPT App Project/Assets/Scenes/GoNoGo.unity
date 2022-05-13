@@ -353,8 +353,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: In this instance, you should NOT have pressed the screen because you were
-    shown two X's in a row.
+  m_Text: In this instance, you should NOT have pressed the screen or spacebar because
+    you were shown two X's in a row.
 --- !u!222 &116088689
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -591,8 +591,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: In these instances, you should have pressed the screen because you were
-    shown two different letters in a row.
+  m_Text: In these instances, you should have pressed the screen or spacebar because
+    you were shown two different letters in a row.
 --- !u!222 &209604024
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1330,11 +1330,11 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "In this game, you will see either an X or a Y. Your job is to tap the
-    screen whenever the letter changes between scenes. \n\nFor example, if you are
-    shown an X and then a Y, you should tap the screen since the letter has changed.
-    \n\nAlternatively, if you are shown an X and then another X, you should NOT tap
-    the screen since the letter has NOT changed. Instead, you should only tap the
-    screen when the letter changes from an X to a Y.  \n"
+    screen or press the spacebar whenever the letter changes between scenes. \n\nFor
+    example, if you are shown an X and then a Y, you should tap/press since the letter
+    has changed. \n\nAlternatively, if you are shown an X and then another X, you
+    should NOT tap/press since the letter has NOT changed. Instead, you should only
+    do so when the letter changes from an X to a Y or from a Y to an X.\n"
 --- !u!222 &388286228
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5636,7 +5636,6 @@ MonoBehaviour:
   numberTrials: 0
   correctResponse: 0
   incorrectResponse: 0
-  Incorrect: 
   Trials1List: 
   Trials2List: 
   result: 0

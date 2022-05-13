@@ -61,7 +61,6 @@ public class DelayDiscountingBehavior : MonoBehaviour
     }
 
     public void OpenTaskPage(){
-        StateNameController.DD_task_complete = true;
         SceneManager.LoadScene("TaskListPage");
     }
 
@@ -116,6 +115,8 @@ public class DelayDiscountingBehavior : MonoBehaviour
         GamePanelChoosing.SetActive(false);
         GamePanelResting.SetActive(false);
         AltEndPanel.SetActive(false);
+
+        StateNameController.DD_task_complete = true;
     }
 
     public void OpenAltEndPanel(){

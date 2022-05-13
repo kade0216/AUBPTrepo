@@ -31,7 +31,7 @@ public int numberTrials = 0;
 
 public int correctResponse;
 public int incorrectResponse;
-public List<int> Incorrect = new List<int>();
+//public List<int> Incorrect = new List<int>(); on StateNameConttoller
 public List<int> Trials1List = new List<int>();
 public List<int> Trials2List = new List<int>();
 
@@ -257,8 +257,8 @@ public void YPracticePage() {
 	YPractice.SetActive(true);
 }
 
-public void clickInCorrect() {
-	Incorrect.Add(numberTrials);
+public void clickIncorrect() {
+	StateNameController.Incorrect.Add(numberTrials);
 }
 
 public void PracticeTrials(){
@@ -326,7 +326,7 @@ public void Trials1 (){
 							Trials1List.Add(panel);
 							if (i != 0) {
 								if (Trials1List[i] == Trials1List[i-1] & pressed == true){
-									clickInCorrect();	}}
+									clickIncorrect();	}}
 							yield return new WaitForSeconds(1);
 					}
 
@@ -337,7 +337,7 @@ public void Trials1 (){
 							Trials1List.Add(panel);
 							if (i != 0) {
 								if (Trials1List[i] == Trials1List[i-1] & pressed == true){
-									clickInCorrect();	}}
+									clickIncorrect();	}}
 							yield return new WaitForSeconds(1);
 						}
 		TrialBlockPage();
@@ -372,7 +372,7 @@ public void Trials2 (){
 							Trials2List.Add(panel);
 							if (j != 0){
 								if (Trials2List[j] == Trials2List[j-1] & pressed == true){
-									clickInCorrect();	}}
+									clickIncorrect();	}}
 							yield return new WaitForSeconds(1);
 					}
 					else {
@@ -382,7 +382,7 @@ public void Trials2 (){
 							Trials2List.Add(panel);
 							if (j != 0){
 								if (Trials2List[j] == Trials2List[j-1] & pressed == true){
-									clickInCorrect();	}}
+									clickIncorrect();	}}
 							yield return new WaitForSeconds(1);
 						}
 		Ending();
@@ -391,4 +391,10 @@ public void Trials2 (){
 public void OpenTaskPage(){
       SceneManager.LoadScene("TaskListPage");
   }
+
+void Update(){
+  //key pressed update on choice page
+  if ((X.activeSelf || Y.activeSelf) && Input.GetKeyUp(KeyCode.Space)) { pressFunc(); }
+}
+
 }

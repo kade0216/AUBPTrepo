@@ -2693,7 +2693,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1421619854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3775,7 +3775,6 @@ MonoBehaviour:
   DDEntry: {fileID: 0}
   GoNoGoEntry: {fileID: 0}
   StopSignalEntry: {fileID: 0}
-  DD_task_complete: 0
 --- !u!114 &2025581184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3808,8 +3807,6 @@ MonoBehaviour:
   user_selection: 0
   start_time: 0
   on_choice: 0
-  task_complete: 0
-  indifference_points: 00000000000000000000000000000000000000000000000000000000
 --- !u!1 &2075187330
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public GameObject Panel4;
 public GameObject Panel5;
 public GameObject Panel6;
 public GameObject Panel7;
-public GameObject Panel7a;
+//public GameObject Panel7a;
 public GameObject Panel8;
 
 public GameObject FixationPointPanel;
@@ -64,6 +64,18 @@ public string output;
 // default app startup
 void Start() //login page launches when user starts app
 {
+  FixationPointPanel.SetActive(false);
+  TrialPanel1.SetActive(false);
+  TrialPanel2.SetActive(false);
+  StopPanel1.SetActive(false);
+  StopPanel2.SetActive(false);
+  CorrectResponsePanel.SetActive(false);
+  IncorrectResponsePanel.SetActive(false);
+  TrialBlockPanel.SetActive(false);
+  PanelOne();
+}
+
+public void PanelOne(){
     Panel1.SetActive(true);
     Panel2.SetActive(false);
     Panel3.SetActive(false);
@@ -71,16 +83,7 @@ void Start() //login page launches when user starts app
     Panel5.SetActive(false);
     Panel6.SetActive(false);
     Panel7.SetActive(false);
-    Panel7a.SetActive(false);
     Panel8.SetActive(false);
-    FixationPointPanel.SetActive(false);
-    TrialPanel1.SetActive(false);
-    TrialPanel2.SetActive(false);
-    StopPanel1.SetActive(false);
-    StopPanel2.SetActive(false);
-    CorrectResponsePanel.SetActive(false);
-    IncorrectResponsePanel.SetActive(false);
-    TrialBlockPanel.SetActive(false);
 }
 
 public void PanelTwo(){
@@ -158,13 +161,13 @@ public void PanelSeven(){
     Panel6.SetActive(false);
     Panel7.SetActive(true);
     Panel8.SetActive(false);
-    StartCoroutine(stopDemo());
+    /*StartCoroutine(stopDemo());
 
     IEnumerator stopDemo() {
       yield return new WaitForSeconds(2);
       Panel7.SetActive(false);
       Panel7a.SetActive(true);
-    }
+    }*/
 
 }
 
