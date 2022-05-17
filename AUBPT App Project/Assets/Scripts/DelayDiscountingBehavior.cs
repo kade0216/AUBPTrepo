@@ -85,12 +85,12 @@ public class DelayDiscountingBehavior : MonoBehaviour
     }
 
     public void OpenGamePanelChoosing(){
-        GamePanelChoosing.SetActive(false);
+        GamePanelChoosing.SetActive(true);
         WelcomePanel.SetActive(false);
         InstructionsPanel.SetActive(false);
         InstructionsTimerPanel.SetActive(false);
         GamePanelResting.SetActive(false);
-        EndPanel.SetActive(true);
+        EndPanel.SetActive(false);
         AltEndPanel.SetActive(false);
         
         on_choice = true;
