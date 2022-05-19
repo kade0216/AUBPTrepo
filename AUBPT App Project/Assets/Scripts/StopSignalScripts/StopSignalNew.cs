@@ -15,9 +15,10 @@ public GameObject Panel3;
 public GameObject Panel4;
 public GameObject Panel5;
 public GameObject Panel6;
+public GameObject Panel7pre;
 public GameObject Panel7;
-//public GameObject Panel7a;
 public GameObject Panel8;
+public GameObject Panel9;
 
 public GameObject FixationPointPanel;
 public GameObject TrialPanel1;
@@ -82,8 +83,10 @@ public void PanelOne(){
     Panel4.SetActive(false);
     Panel5.SetActive(false);
     Panel6.SetActive(false);
+    Panel7pre.SetActive(false);
     Panel7.SetActive(false);
     Panel8.SetActive(false);
+    Panel9.SetActive(false);
 }
 
 public void PanelTwo(){
@@ -94,9 +97,10 @@ public void PanelTwo(){
     Panel4.SetActive(false);
     Panel5.SetActive(false);
     Panel6.SetActive(false);
+    Panel7pre.SetActive(false);
     Panel7.SetActive(false);
     Panel8.SetActive(false);
-
+    Panel9.SetActive(false);
 }
 
 public void PanelThree(){
@@ -107,9 +111,10 @@ public void PanelThree(){
     Panel4.SetActive(false);
     Panel5.SetActive(false);
     Panel6.SetActive(false);
+    Panel7pre.SetActive(false);
     Panel7.SetActive(false);
     Panel8.SetActive(false);
-
+    Panel9.SetActive(false);
 }
 
 public void PanelFour(){
@@ -120,9 +125,10 @@ public void PanelFour(){
     Panel4.SetActive(true);
     Panel5.SetActive(false);
     Panel6.SetActive(false);
+    Panel7pre.SetActive(false);
     Panel7.SetActive(false);
     Panel8.SetActive(false);
-
+    Panel9.SetActive(false);
 }
 
 public void PanelFive(){
@@ -134,8 +140,9 @@ public void PanelFive(){
     Panel5.SetActive(true);
     Panel6.SetActive(false);
     Panel7.SetActive(false);
+    Panel7pre.SetActive(false);
     Panel8.SetActive(false);
-
+    Panel9.SetActive(false);
 }
 
 public void PanelSix(){
@@ -146,12 +153,13 @@ public void PanelSix(){
     Panel4.SetActive(false);
     Panel5.SetActive(false);
     Panel6.SetActive(true);
+    Panel7pre.SetActive(false);
     Panel7.SetActive(false);
     Panel8.SetActive(false);
-
+    Panel9.SetActive(false);
 }
 
-public void PanelSeven(){
+public void PanelSevenPre(){
 
     Panel1.SetActive(false);
     Panel2.SetActive(false);
@@ -159,16 +167,17 @@ public void PanelSeven(){
     Panel4.SetActive(false);
     Panel5.SetActive(false);
     Panel6.SetActive(false);
-    Panel7.SetActive(true);
+    Panel7pre.SetActive(true);
+    Panel7.SetActive(false);
     Panel8.SetActive(false);
-    /*StartCoroutine(stopDemo());
+    Panel9.SetActive(false);
+    StartCoroutine(stopDemo());
 
     IEnumerator stopDemo() {
-      yield return new WaitForSeconds(2);
-      Panel7.SetActive(false);
-      Panel7a.SetActive(true);
-    }*/
-
+      yield return new WaitForSeconds((float)0.4);
+      Panel7pre.SetActive(false);
+      Panel7.SetActive(true);
+    }
 }
 
 public void PanelEight(){
@@ -181,7 +190,21 @@ public void PanelEight(){
     Panel6.SetActive(false);
     Panel7.SetActive(false);
     Panel8.SetActive(true);
+    Panel9.SetActive(false);
 
+}
+
+public void PanelNine(){
+
+    Panel1.SetActive(false);
+    Panel2.SetActive(false);
+    Panel3.SetActive(false);
+    Panel4.SetActive(false);
+    Panel5.SetActive(false);
+    Panel6.SetActive(false);
+    Panel7.SetActive(false);
+    Panel8.SetActive(false);
+    Panel9.SetActive(true);
 }
 
 public void TrialPanel(){
@@ -192,6 +215,7 @@ public void TrialPanel(){
     Panel4.SetActive(false);
     Panel5.SetActive(false);
     Panel6.SetActive(false);
+    Panel7pre.SetActive(false);
     Panel7.SetActive(false);
     Panel8.SetActive(false);
     TrialBlockPanel.SetActive(false);
@@ -596,8 +620,10 @@ public void OpenTaskPage(){
 //called once per frame
 void Update(){
   //key pressed update on choice page
-  if (Input.GetKeyUp(KeyCode.LeftArrow)) { chooseLeft(); }
-  if (Input.GetKeyUp(KeyCode.RightArrow)) { chooseRight(); }
+  if(TrialPanel1.activeSelf || TrialPanel2.activeSelf || StopPanel1.activeSelf || StopPanel2.activeSelf){
+    if (Input.GetKeyUp(KeyCode.LeftArrow)) { chooseLeft(); }
+    if (Input.GetKeyUp(KeyCode.RightArrow)) { chooseRight(); }
+  }
 }
 
 }

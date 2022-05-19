@@ -3040,10 +3040,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: eae977a6388674f899b4b9facdee0d5d, type: 3}
-    m_FontSize: 36
+    m_FontSize: 22
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -3051,7 +3051,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: ADD HERE (erase top?)
+  m_Text: 'The Alcohol Use Behavioral Phenotyping Test (AUBPT) uses tasks or games
+    to understand different domains in individual behaviors that could be related
+    to risky & harmful alcohol use.
+
+
+    Please press next to continue.'
 --- !u!222 &1571006823
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -42,14 +42,7 @@ public class DelayDiscountingBehavior : MonoBehaviour
 
     // default app startup
     void Start(){
-        WelcomePanel.SetActive(true);
-        InstructionsPanel.SetActive(false);
-        InstructionsTimerPanel.SetActive(false);
-        GamePanelChoosing.SetActive(false);
-        GamePanelResting.SetActive(false);
-        EndPanel.SetActive(false);
-        AltEndPanel.SetActive(false);
-        
+        OpenWelcomePanel();
         random = Random.Range(0f, 1f) > 0.50;
         imm_side = random ? 0 : 1;
         UpdateText();
@@ -62,6 +55,16 @@ public class DelayDiscountingBehavior : MonoBehaviour
 
     public void OpenTaskPage(){
         SceneManager.LoadScene("TaskListPage");
+    }
+
+    public void OpenWelcomePanel(){
+        WelcomePanel.SetActive(true);
+        InstructionsPanel.SetActive(false);
+        InstructionsTimerPanel.SetActive(false);
+        GamePanelChoosing.SetActive(false);
+        GamePanelResting.SetActive(false);
+        EndPanel.SetActive(false);
+        AltEndPanel.SetActive(false);
     }
 
     public void OpenInstructionsPanel(){
