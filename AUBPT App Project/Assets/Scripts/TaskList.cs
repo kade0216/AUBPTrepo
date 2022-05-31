@@ -16,15 +16,15 @@ public class TaskList : MonoBehaviour
 
   // default app startup
   void Start(){
-      if(StateNameController.DD_task_complete) { DDEntry.SetActive(false); }
-      else { DDEntry.SetActive(true); }
-      if(StateNameController.GoNoGo_task_complete) { GoNoGoEntry.SetActive(false); }
-      else { GoNoGoEntry.SetActive(true); }
-      if(StateNameController.StopSignal_task_complete) { StopSignalEntry.SetActive(false); }
-      else { StopSignalEntry.SetActive(true); }
+      //if(StateNameController.DD_task_complete) { DDEntry.SetActive(false); }
+      //else { DDEntry.SetActive(true); }
+      //if(StateNameController.GoNoGo_task_complete) { GoNoGoEntry.SetActive(false); }
+      //else { GoNoGoEntry.SetActive(true); }
+      //if(StateNameController.StopSignal_task_complete) { StopSignalEntry.SetActive(false); }
+      //else { StopSignalEntry.SetActive(true); }
 
-      if(StateNameController.platform == "MTURK"){ UserInfoText.text = "Participant ID: " + StateNameController.MTURK_participant_ID; }
-      else{}
+      //if(StateNameController.platform == "MTURK"){ UserInfoText.text = "Participant ID: " + StateNameController.MTURK_participant_ID; }
+      //else{}
   }
   
   public void OpenLogin(){
@@ -43,8 +43,9 @@ public class TaskList : MonoBehaviour
       SceneManager.LoadScene("StopSignal");
   }
 
-  public void OpenTaskPage(){
-      SceneManager.LoadScene("TaskListPage");
+  public void OpenHomePage(){
+
+      SceneManager.LoadScene("LogInSystem");
   }
 
   // Update is called once per frame

@@ -1590,7 +1590,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.001159668, y: -0.001449585}
+  m_AnchoredPosition: {x: -0.001159668, y: -0.0014648438}
   m_SizeDelta: {x: -203.47, y: -114.46}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &518396851
@@ -3047,7 +3047,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2069714942}
         m_TargetAssemblyTypeName: GoNoGoNavigation, Assembly-CSharp
-        m_MethodName: OpenTaskPage
+        m_MethodName: OpenHomePage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

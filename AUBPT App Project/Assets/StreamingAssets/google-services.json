@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "419195829537",
+    "firebase_url": "https://aupbt-unity-default-rtdb.firebaseio.com",
+    "project_id": "aupbt-unity",
+    "storage_bucket": "aupbt-unity.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:419195829537:android:abb49d8c14ae41085fd260",
+        "android_client_info": {
+          "package_name": "com.duke.AUPBT"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "419195829537-hsh0eerm468pq8uenldl53eq3oih1jgt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKomI5JqxMR4g8CgI0QuvpClaX_0MUdBg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "419195829537-hsh0eerm468pq8uenldl53eq3oih1jgt.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "419195829537-q9qj5spjh14mbpm0nb450r3k96aeg3q4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.duke.AUPBT"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

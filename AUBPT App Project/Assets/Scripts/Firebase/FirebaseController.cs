@@ -7,21 +7,30 @@ using Firebase.Auth;
 using System;
 using System.Threading.Tasks;
 using Firebase.Extensions;
-
+using Firebase.Database;
+using Firebase;
 
 public class FirebaseController : MonoBehaviour
 {
-    [SerializeField] private GameObject loginPanel, signupPanel, profilePanel, forgotPasswordPanel, notificationPanel, welcomePanel;
+    [SerializeField] private GameObject loginPanel, signupPanel, homePanel, forgotPasswordPanel, notificationPanel, welcomePanel;
     [SerializeField] private InputField loginEmail, loginPassword, signupEmail, signupPassword, signupCPassword, signupName, forgetPassEmail;
     [SerializeField] private Text notif_Title_Text, notif_Message_Text, profileUserName_Text, profileUserEmail_Text;
     [SerializeField] private Toggle remember;
+    public InputField Username;
+
+    DatabaseReference dbReference;
 
     Firebase.Auth.FirebaseAuth auth;
-    Firebase.Auth.FirebaseUser user;
-    bool isSingIn = false;
+    public Firebase.Auth.FirebaseUser user;
+    public bool isSingIn = false;
 
     void Start()
     {
+        if (isSingIn == false)
+        {
+            OpenWelcomePanel();
+        }
+
         Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task => {
             var dependencyStatus = task.Result;
             if (dependencyStatus == Firebase.DependencyStatus.Available)
@@ -40,14 +49,18 @@ public class FirebaseController : MonoBehaviour
             }
         });
 
+        dbReference = FirebaseDatabase.DefaultInstance.RootReference;
+
     }
+
+
 
 
     public void OpenLoginPanel()
     {
         loginPanel.SetActive(true);
         signupPanel.SetActive(false);
-        profilePanel.SetActive(false);
+        homePanel.SetActive(false);
         forgotPasswordPanel.SetActive(false);
         welcomePanel.SetActive(false);
     }
@@ -56,16 +69,16 @@ public class FirebaseController : MonoBehaviour
     {
         loginPanel.SetActive(false);
         signupPanel.SetActive(true);
-        profilePanel.SetActive(false);
+        homePanel.SetActive(false);
         forgotPasswordPanel.SetActive(false);
         welcomePanel.SetActive(false);
     }
 
-    public void OpenProfilePanel()
+    public void OpenHomePanel()
     {
         loginPanel.SetActive(false);
         signupPanel.SetActive(false);
-        profilePanel.SetActive(true);
+        homePanel.SetActive(true);
         forgotPasswordPanel.SetActive(false);
         welcomePanel.SetActive(false);
     }
@@ -74,9 +87,18 @@ public class FirebaseController : MonoBehaviour
     {
         loginPanel.SetActive(false);
         signupPanel.SetActive(false);
-        profilePanel.SetActive(false);
+        homePanel.SetActive(false);
         forgotPasswordPanel.SetActive(true);
         welcomePanel.SetActive(false);
+    }
+
+    public void OpenWelcomePanel()
+    {
+        loginPanel.SetActive(false);
+        signupPanel.SetActive(false);
+        homePanel.SetActive(false);
+        forgotPasswordPanel.SetActive(false);
+        welcomePanel.SetActive(true);
     }
 
     public void LoginUser()
@@ -102,6 +124,7 @@ public class FirebaseController : MonoBehaviour
 
         //if not null then SignUp
         CreateUser(signupEmail.text, signupPassword.text, signupName.text);
+
 
     }
 
@@ -137,10 +160,12 @@ public class FirebaseController : MonoBehaviour
 
     public void LogOut()
     {
+        isSingIn = false;
+        OpenLoginPanel();
         auth.SignOut();
         profileUserName_Text.text = "";
         profileUserEmail_Text.text = "";
-        OpenLoginPanel();
+        
     }
 
 
@@ -177,7 +202,15 @@ public class FirebaseController : MonoBehaviour
                 newUser.DisplayName, newUser.UserId);
 
             UpdateUserProfile(Username);
+
+            //create register of the user on database
+            dbReference.Child(user.UserId).Child("UserInfo").Child("ID").SetValueAsync(newUser.UserId);
+            dbReference.Child(user.UserId).Child("UserInfo").Child("Name").SetValueAsync(Username);
+            dbReference.Child(user.UserId).Child("UserInfo").Child("Email").SetValueAsync(newUser.Email);
+
         });
+
+        
     }
 
     public void SingInUser(string email, string password)
@@ -191,8 +224,6 @@ public class FirebaseController : MonoBehaviour
             if (task.IsFaulted)
             {
                 Debug.LogError("SignInWithEmailAndPasswordAsync encountered an error: " + task.Exception);
-
-
 
                 foreach (Exception exception in task.Exception.Flatten().InnerExceptions)
                 {      
@@ -213,9 +244,14 @@ public class FirebaseController : MonoBehaviour
                 newUser.DisplayName, newUser.UserId);
             profileUserName_Text.text = "" + newUser.DisplayName;
             profileUserEmail_Text.text = "" + newUser.Email;
-            OpenProfilePanel();
+            OpenHomePanel();
         });
+
+        
+
     }
+
+   
 
     void InitializeFirebase()
     {
@@ -279,20 +315,28 @@ public class FirebaseController : MonoBehaviour
         }
     }
 
-    bool isSined = false;
+    bool loged = true;
 
-    private void Update()
+    void Update()
     {
         if (isSingIn)
         {
-            if (isSined)
+            if (loged)
             {
-                isSined = true;
+                loged = true;
+                OpenHomePanel();
                 profileUserName_Text.text = "" + user.DisplayName;
                 profileUserEmail_Text.text = "" + user.Email;
-                OpenProfilePanel();
+            }
+            if (loged == false)
+            {
+                OpenWelcomePanel();
             }
         }
+        
+
+        
+
     }
 
     private static string GetErrorMessage(AuthError errorCode)
@@ -354,4 +398,13 @@ public class FirebaseController : MonoBehaviour
 
         });
     }
+
+
+    /// Database
+    public void SaveData()
+    {
+        dbReference.Child(user.UserId).Child("UserInfo").Child("name").SetValueAsync(Username.text);
+        dbReference.Child(user.UserId).Child("UserInfo2").Child("sobrenome").SetValueAsync(Username.text);
+    }
+
 }

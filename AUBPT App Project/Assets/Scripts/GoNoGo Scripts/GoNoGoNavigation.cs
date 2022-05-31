@@ -43,6 +43,7 @@ public string output;
 void Start() //login page launches when user starts app
 {
 	BeforeYouStart.SetActive(true);
+
 }
 
 // page functions
@@ -388,8 +389,8 @@ public void Trials2 (){
 		Ending();
 }}}
 
-public void OpenTaskPage(){
-      SceneManager.LoadScene("TaskListPage");
+public void OpenHomePage(){
+      SceneManager.LoadScene("LogInSystem");
   }
 
 void Update(){

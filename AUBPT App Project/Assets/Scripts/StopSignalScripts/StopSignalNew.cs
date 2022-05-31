@@ -613,8 +613,8 @@ public void WhistleAudio() {
   Debug.Log(delay);
 }
 
-public void OpenTaskPage(){
-  SceneManager.LoadScene("TaskListPage");
+public void OpenHomePage(){
+  SceneManager.LoadScene("LogInSystem");
 }
 
 //called once per frame

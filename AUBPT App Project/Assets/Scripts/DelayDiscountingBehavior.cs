@@ -53,8 +53,8 @@ public class DelayDiscountingBehavior : MonoBehaviour
         }
     }
 
-    public void OpenTaskPage(){
-        SceneManager.LoadScene("TaskListPage");
+    public void OpenHomePage(){
+        SceneManager.LoadScene("LogInSystem");
     }
 
     public void OpenWelcomePanel(){
